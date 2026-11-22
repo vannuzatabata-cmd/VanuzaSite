@@ -1,6 +1,6 @@
 import { siteConfig } from '@/data/site';
 
-export const SITE_URL = 'https://www.vanuzasoaresextensoes.com.br';
+export const SITE_URL = 'https://vanuzasoaresextensoes.com';
 export const BUSINESS_NAME = 'Vanuza Soares Extensões';
 
 export const DEFAULT_TITLE = 'Vanuza Soares Extensões | Extensão Capilar em Leiria';

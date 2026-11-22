@@ -30,6 +30,6 @@ Menu mobile, lightbox e formulário do WhatsApp usam apenas HTML e JavaScript na
 
 ## Domínio canônico
 
-`https://www.vanuzasoaresextensoes.com.br`
+`https://vanuzasoaresextensoes.com`
 
 As URLs públicas foram preservadas durante a migração.

@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://www.vanuzasoaresextensoes.com.br',
+  site: 'https://vanuzasoaresextensoes.com',
   output: 'static',
   trailingSlash: 'never',
   build: {

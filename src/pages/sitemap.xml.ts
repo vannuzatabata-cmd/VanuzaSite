@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = true;
 
-const SITE_URL = 'https://www.vanuzasoaresextensoes.com.br';
+const SITE_URL = 'https://vanuzasoaresextensoes.com';
 const LAST_MODIFIED = '2026-07-17T03:00:00.000Z';
 
 const routes = [
