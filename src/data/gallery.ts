@@ -7,7 +7,7 @@ export const resultImages = [
   {
     src: '/images/resultados/resultado-2.webp',
     label: 'Cachos definidos',
-    alt: 'Antes e depois de cabelo crespo curto com extensão cacheada longa e definida',
+    alt: 'Antes e depois de cabelo crespo curto com extensão encaracolada longa e definida',
   },
   {
     src: '/images/resultados/resultado-3.webp',
@@ -16,12 +16,12 @@ export const resultImages = [
   },
   {
     src: '/images/resultados/resultado-4.webp',
-    label: 'Volume cacheado',
-    alt: 'Antes e depois de cabelo cacheado com mais comprimento, volume e definição',
+    label: 'Volume encaracolado',
+    alt: 'Antes e depois de cabelo encaracolado com mais comprimento, volume e definição',
   },
   {
     src: '/images/resultados/resultado-5.webp',
-    label: 'Comprimento cacheado',
+    label: 'Comprimento encaracolado',
     alt: 'Antes e depois de cabelo crespo com extensão longa e cachos definidos',
   },
   {

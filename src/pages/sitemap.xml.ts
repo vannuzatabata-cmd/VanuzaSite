@@ -3,7 +3,6 @@ import type { APIRoute } from 'astro';
 export const prerender = true;
 
 const SITE_URL = 'https://vanuzasoaresextensoes.com';
-const LAST_MODIFIED = '2026-07-17T03:00:00.000Z';
 
 const routes = [
   { path: '/', changeFrequency: 'monthly', priority: '1' },
@@ -24,8 +23,7 @@ const routes = [
 const urlEntries = routes
   .map(
     ({ path, changeFrequency, priority }) => `  <url>
-    <loc>${SITE_URL}${path}</loc>
-    <lastmod>${LAST_MODIFIED}</lastmod>
+    <loc>${SITE_URL}${path === '/' ? path : `${path}/`}</loc>
     <changefreq>${changeFrequency}</changefreq>
     <priority>${priority}</priority>
   </url>`,

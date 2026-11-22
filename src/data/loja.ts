@@ -33,7 +33,7 @@ export const lojaCategorias: LojaCategoria[] = [
       'Cabelo Brasileiro',
       'Cabelos Lisos',
       'Cabelos Ondulados',
-      'Cabelos Cacheados',
+      'Cabelos Encaracolados',
       'Cachos Permanentes',
       'Telas e Tecimentos',
       'Apliques Tic Tac',

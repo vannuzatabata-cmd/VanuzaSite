@@ -15,7 +15,9 @@ export const DEFAULT_SOCIAL_IMAGE = {
 };
 
 export function getCanonicalUrl(path: string) {
-  return new URL(path, `${SITE_URL}/`).toString();
+  const url = new URL(path, `${SITE_URL}/`);
+  if (url.pathname !== '/' && !url.pathname.endsWith('/')) url.pathname += '/';
+  return url.toString();
 }
 
 export function getFullTitle(title: string) {
@@ -53,7 +55,7 @@ export const siteStructuredData = {
             itemOffered: {
               '@type': 'Service',
               name: 'Microlink',
-              url: `${SITE_URL}/tecnicas#microlink`,
+              url: `${SITE_URL}/tecnicas/#microlink`,
             },
           },
           {
@@ -61,7 +63,7 @@ export const siteStructuredData = {
             itemOffered: {
               '@type': 'Service',
               name: 'Fita Adesiva',
-              url: `${SITE_URL}/tecnicas#fita-adesiva`,
+              url: `${SITE_URL}/tecnicas/#fita-adesiva`,
             },
           },
           {
@@ -69,7 +71,7 @@ export const siteStructuredData = {
             itemOffered: {
               '@type': 'Service',
               name: 'Ponto Americano',
-              url: `${SITE_URL}/tecnicas#ponto-americano`,
+              url: `${SITE_URL}/tecnicas/#ponto-americano`,
             },
           },
           {
@@ -77,7 +79,7 @@ export const siteStructuredData = {
             itemOffered: {
               '@type': 'Service',
               name: 'Manutenção de extensão capilar',
-              url: `${SITE_URL}/servicos/manutencao`,
+              url: `${SITE_URL}/servicos/manutencao/`,
             },
           },
         ],
@@ -92,7 +94,7 @@ export const siteStructuredData = {
       '@type': 'Person',
       '@id': `${SITE_URL}/#vanuza-soares`,
       name: 'Vanuza Soares',
-      url: `${SITE_URL}/vanuza-soares`,
+      url: `${SITE_URL}/vanuza-soares/`,
       image: `${SITE_URL}/images/hero-vanuza.webp`,
       jobTitle: 'Especialista em extensão capilar',
       knowsAbout: ['Microlink', 'Fita Adesiva', 'Ponto Americano'],

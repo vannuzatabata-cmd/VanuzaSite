@@ -30,7 +30,7 @@ const techniques = [
       {
         title: 'Para quem pode ser uma opção',
         paragraphs: [
-          'Ele pode ser considerado por quem busca mais comprimento ou volume e prefere uma técnica sem faixa adesiva. Como as mechas ficam distribuídas em pontos, o acabamento depende do desenho da aplicação, da escolha do cabelo e da combinação de cor e textura.',
+          'Ele pode ser considerado por quem procura mais comprimento ou volume e prefere uma técnica sem faixa adesiva. Como as mechas ficam distribuídas em pontos, o acabamento depende do desenho da aplicação, da escolha do cabelo e da combinação de cor e textura.',
           'Nem toda técnica funciona da mesma forma em todos os cabelos. Fios muito curtos, sensibilizados ou com pouca densidade podem exigir outra estratégia. Por isso, a decisão é feita depois de uma avaliação presencial, e não apenas por fotografia ou mensagem.',
         ],
       },
@@ -47,7 +47,7 @@ const techniques = [
       {
         title: 'Manutenção',
         paragraphs: [
-          'Conforme o cabelo cresce, os pontos de fixação se afastam da raiz. A manutenção serve para revisar a aplicação, retirar fios naturalmente desprendidos e reposicionar as mechas quando for adequado. O intervalo não é igual para todas as pessoas.',
+          'Conforme o cabelo cresce, os pontos de fixação afastam-se da raiz. A manutenção serve para rever a aplicação, retirar fios naturalmente desprendidos e reposicionar as mechas quando for adequado. O intervalo não é igual para todas as pessoas.',
         ],
       },
     ],
@@ -77,10 +77,10 @@ const techniques = [
     ],
     blocks: [
       {
-        title: 'Quando considerar essa técnica',
+        title: 'Quando considerar esta técnica',
         paragraphs: [
-          'A Fita Adesiva pode interessar a quem busca uma base plana e deseja distribuir o volume em camadas. Ela também costuma ser lembrada por permitir uma aplicação organizada em faixas, mas a adequação precisa ser verificada no cabelo real.',
-          'Comprimento, densidade, textura, corte e hábitos de finalização influenciam a cobertura das bases. A avaliação também considera se a cliente consegue manter os cuidados com a área adesiva e comparecer aos retornos necessários.',
+          'A Fita Adesiva pode interessar a quem procura uma base plana e deseja distribuir o volume em camadas. Esta técnica também é conhecida por permitir uma aplicação organizada em faixas, mas a adequação precisa ser verificada no cabelo real.',
+          'Comprimento, densidade, textura, corte e hábitos de finalização influenciam a cobertura das bases. A avaliação também considera se a cliente consegue manter os cuidados com a área adesiva e comparecer às manutenções necessárias.',
           'Não existe uma técnica universalmente melhor. Em alguns casos, o Microlink ou o Ponto Americano pode ser mais compatível com a intenção e a rotina.',
         ],
       },
@@ -123,7 +123,7 @@ const techniques = [
       {
         title: 'Manutenção',
         paragraphs: [
-          'Com o crescimento natural, a aplicação se afasta da raiz e precisa ser revisada. A frequência da manutenção depende do crescimento do cabelo, dos cuidados no dia a dia e do estado da aplicação. O intervalo deve ser definido em conjunto com a profissional.',
+          'Com o crescimento natural, a aplicação afasta-se da raiz e precisa de ser revista. A frequência da manutenção depende do crescimento do cabelo, dos cuidados no dia a dia e do estado da aplicação. O intervalo deve ser definido em conjunto com a profissional.',
         ],
       },
     ],
@@ -296,6 +296,8 @@ const techniques = [
                 <video
                   src={technique.video}
                   controls
+                  autoplay
+                  loop
                   muted
                   playsinline
                   preload="metadata"
@@ -309,7 +311,7 @@ const techniques = [
                   class="button-primary w-full rounded-xl"
                 >
                   Agendar avaliação
-                  <span class="sr-only">, abre em nova aba</span>
+                  <span class="sr-only">, abre num novo separador</span>
                 </a>
               </div>
             </article>
@@ -380,9 +382,20 @@ const techniques = [
           class="button-primary"
         >
           Agendar Avaliação Gratuita
-          <span class="sr-only">, abre em nova aba</span>
+          <span class="sr-only">, abre num novo separador</span>
         </a>
       </div>
     </section>
   </main>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      }
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll<HTMLVideoElement>('video').forEach((video) => observer.observe(video));
+  </script>
 </BaseLayout>
