@@ -1,0 +1,63 @@
+---
+const questions = [
+  {
+    question: 'Qual técnica de extensão capilar combina com o meu cabelo?',
+    answer: 'A escolha depende da textura, espessura, rotina e objetivo. A avaliação presencial ajuda a definir qual das técnicas, Microlink, Fita Adesiva ou Ponto Americano, é mais adequada.',
+  },
+  {
+    question: 'Quanto tempo dura a extensão capilar?',
+    answer: 'O intervalo de manutenção varia conforme a técnica, o crescimento do cabelo e os cuidados em casa. A orientação de retorno é definida individualmente no atendimento.',
+  },
+  {
+    question: 'Como cuidar da extensão capilar no dia a dia?',
+    answer: 'É importante desembaraçar com cuidado, secar bem a raiz, evitar tração e seguir as orientações específicas recebidas após a aplicação.',
+  },
+  {
+    question: 'Onde fica o atendimento em Leiria?',
+    answer: 'O atendimento acontece em Leiria, Portugal. O atendimento é feito com hora marcada.',
+  },
+];
+---
+
+<section
+  class="tone-marsala section-standard"
+  aria-labelledby="faq-home-titulo"
+>
+  <div class="mx-auto max-w-4xl px-5 sm:px-8">
+    <div class="mb-9">
+      <h2 id="faq-home-titulo" class="section-title mb-4 font-extrabold text-white">
+        Dúvidas antes de agendar
+      </h2>
+      <p class="max-w-2xl text-white/70">
+        Respostas diretas para entender o atendimento e chegar à avaliação com mais segurança.
+      </p>
+    </div>
+
+    <div class="border-t border-white/10">
+      {questions.map((item) => (
+        <details class="group border-b border-white/10 py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-bold text-white sm:text-lg">
+            {item.question}
+            <span
+              aria-hidden="true"
+              class="text-2xl font-light transition-transform group-open:rotate-45"
+              style="color: var(--gold);"
+            >
+              +
+            </span>
+          </summary>
+          <p class="pr-10 pt-4 text-sm leading-relaxed text-white/70 sm:text-base">
+            {item.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+
+    <a
+      href="/perguntas-frequentes"
+      class="mt-8 inline-flex rounded-full border border-[#985365] bg-[#F7ECE6] px-6 py-3 text-sm font-bold text-[#4A1F2C] transition-colors hover:bg-[#EFDCD3]"
+    >
+      Ver perguntas frequentes
+    </a>
+  </div>
+</section>

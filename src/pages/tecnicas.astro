@@ -1,0 +1,388 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { metadata as siteMetadata, siteConfig } from '@/data/site';
+
+const techniques = [
+  {
+    num: '01',
+    id: 'microlink',
+    video: '/videos/microlink.mp4',
+    name: 'Microlink',
+    slogan: 'Mechas distribuídas sem faixa adesiva.',
+    duration: '2 a 6 horas',
+    durability: '2 a 3 meses',
+    desc: 'Técnica em que pequenas anilhas unem as mechas ao cabelo natural. A distribuição, a quantidade e o acabamento são planeados depois de avaliar os fios e a rotina da cliente.',
+    advantages: [
+      'Fixação sem faixa adesiva',
+      'Distribuição mecha a mecha',
+      'Planeamento de cor e textura',
+      'Reposicionamento feito na manutenção',
+      'Indicação confirmada na avaliação',
+    ],
+    care: [
+      'Desembarace das pontas para a raiz',
+      'Apoie a região próxima às fixações',
+      'Seque completamente a raiz',
+      'Evite penteados muito apertados',
+      'Siga a orientação individual de retorno',
+    ],
+    blocks: [
+      {
+        title: 'Para quem pode ser uma opção',
+        paragraphs: [
+          'Ele pode ser considerado por quem busca mais comprimento ou volume e prefere uma técnica sem faixa adesiva. Como as mechas ficam distribuídas em pontos, o acabamento depende do desenho da aplicação, da escolha do cabelo e da combinação de cor e textura.',
+          'Nem toda técnica funciona da mesma forma em todos os cabelos. Fios muito curtos, sensibilizados ou com pouca densidade podem exigir outra estratégia. Por isso, a decisão é feita depois de uma avaliação presencial, e não apenas por fotografia ou mensagem.',
+        ],
+      },
+      {
+        title: 'O que a avaliação considera',
+        list: [
+          'Comprimento e densidade do cabelo natural',
+          'Textura, cor e efeito desejado',
+          'Distribuição necessária para o acabamento',
+          'Hábitos de lavagem, penteados e finalização',
+          'Rotina possível de manutenção',
+        ],
+      },
+      {
+        title: 'Manutenção',
+        paragraphs: [
+          'Conforme o cabelo cresce, os pontos de fixação se afastam da raiz. A manutenção serve para revisar a aplicação, retirar fios naturalmente desprendidos e reposicionar as mechas quando for adequado. O intervalo não é igual para todas as pessoas.',
+        ],
+      },
+    ],
+  },
+  {
+    num: '02',
+    id: 'fita-adesiva',
+    video: '/videos/fita-adesiva.mp4',
+    name: 'Fita Adesiva',
+    slogan: 'Bases planas distribuídas em camadas.',
+    duration: '1 a 3 horas',
+    durability: '1 a 2 meses',
+    desc: 'Técnica com mechas de base adesiva posicionadas em pares. O planeamento considera densidade, corte, caimento e a forma como a cliente costuma prender e finalizar o cabelo.',
+    advantages: [
+      'Bases finas organizadas em camadas',
+      'Distribuição planeada de volume',
+      'Posicionamento adaptado ao corte',
+      'Reposicionamento profissional',
+      'Indicação confirmada na avaliação',
+    ],
+    care: [
+      'Evite óleos diretamente sobre as bases',
+      'Lave sem fricção intensa',
+      'Seque bem a raiz e as faixas',
+      'Não recoloque uma faixa em casa',
+      'Siga a orientação individual de retorno',
+    ],
+    blocks: [
+      {
+        title: 'Quando considerar essa técnica',
+        paragraphs: [
+          'A Fita Adesiva pode interessar a quem busca uma base plana e deseja distribuir o volume em camadas. Ela também costuma ser lembrada por permitir uma aplicação organizada em faixas, mas a adequação precisa ser verificada no cabelo real.',
+          'Comprimento, densidade, textura, corte e hábitos de finalização influenciam a cobertura das bases. A avaliação também considera se a cliente consegue manter os cuidados com a área adesiva e comparecer aos retornos necessários.',
+          'Não existe uma técnica universalmente melhor. Em alguns casos, o Microlink ou o Ponto Americano pode ser mais compatível com a intenção e a rotina.',
+        ],
+      },
+      {
+        title: 'Manutenção',
+        paragraphs: [
+          'Produtos oleosos e tração na região da fita podem comprometer a fixação. Conforme o cabelo cresce, é necessário avaliar o reposicionamento. O intervalo varia com crescimento, rotina e conservação, e deve ser combinado com a profissional.',
+        ],
+      },
+    ],
+  },
+  {
+    num: '03',
+    id: 'ponto-americano',
+    video: '/videos/ponto-americano.mp4',
+    name: 'Ponto Americano',
+    slogan: 'Trama aplicada em linhas planeadas.',
+    duration: '1 a 4 horas',
+    durability: '1 a 3 meses',
+    desc: 'Método que organiza uma trama de cabelo em linhas definidas na base natural. A quantidade, a cobertura e a distribuição precisam ser compatíveis com o cabelo avaliado.',
+    advantages: [
+      'Trama distribuída em linhas',
+      'Planeamento de volume e cobertura',
+      'Aplicação ajustada à base natural',
+      'Manutenção feita por profissional',
+    ],
+    care: [
+      'Evite tração e penteados apertados',
+      'Higienize com cuidado entre as linhas',
+      'Seque completamente a região da base',
+      'Siga a orientação individual de retorno',
+    ],
+    blocks: [
+      {
+        title: 'Para quem é indicada a técnica Ponto Americano?',
+        paragraphs: [
+          'Indicada para mulheres que desejam aumentar o comprimento e o volume dos cabelos através de uma aplicação com mechas costuradas e fixadas por pequenas anilhas. Permite uma distribuição personalizada das extensões, respeitando as características e a densidade do cabelo natural.',
+        ],
+      },
+      {
+        title: 'Manutenção',
+        paragraphs: [
+          'Com o crescimento natural, a aplicação se afasta da raiz e precisa ser revisada. A frequência da manutenção depende do crescimento do cabelo, dos cuidados no dia a dia e do estado da aplicação. O intervalo deve ser definido em conjunto com a profissional.',
+        ],
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={siteMetadata.techniques.title}
+  description={siteMetadata.techniques.description}
+  path="/tecnicas"
+>
+  <main class="min-h-[100dvh]">
+    <section
+      class="tone-marsala relative flex items-start overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 30% 60%, rgba(152,73,92,0.25) 0%, transparent 60%)"
+      ></div>
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center w-full">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px w-8" style="background: var(--gold)"></div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--gold)">
+            Especialização Técnica
+          </p>
+          <div class="h-px w-8" style="background: var(--gold)"></div>
+        </div>
+        <h1 class="page-title font-extrabold text-white mb-4">Técnicas de extensão capilar em Leiria</h1>
+        <p class="text-lg max-w-xl mx-auto" style="color: rgba(255,255,255,0.75)">
+          Cada atendimento começa com uma avaliação cuidadosa, passa pela escolha da técnica ideal e segue com
+          aplicação profissional, foco no acabamento e orientação para manutenção.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="tone-nude section-standard"
+    >
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 space-y-10 sm:space-y-14">
+        {
+          techniques.map((technique, index) => (
+            <article id={technique.id} class="scroll-mt-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+              <div
+                class={`lg:col-span-3 ${index % 2 !== 0 ? 'md:order-2 lg:order-2' : ''}`}
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-xs font-bold tracking-[0.15em]" style="color: var(--gold)">
+                    {technique.num}
+                  </span>
+                  <div class="h-px flex-1" style="background: rgba(198,161,91,0.3)"></div>
+                </div>
+                <h2 class="section-title font-extrabold text-white mb-1">{technique.name}</h2>
+                <p class="font-bold text-base mb-6" style="color: var(--secondary)">{technique.slogan}</p>
+                <p class="leading-relaxed mb-8" style="color: rgba(255,255,255,0.72)">{technique.desc}</p>
+
+                <div class="space-y-8 mb-10">
+                  {
+                    technique.blocks.map((block) => (
+                      <div>
+                        <h3 class="font-extrabold text-sm text-white uppercase tracking-wide mb-4">{block.title}</h3>
+                        {block.paragraphs?.map((paragraph) => (
+                          <p class="leading-relaxed text-sm mb-3" style="color: rgba(255,255,255,0.72)">{paragraph}</p>
+                        ))}
+                        {block.steps && (
+                          <ol class="space-y-3 mt-4">
+                            {block.steps.map((step, stepIndex) => (
+                              <li class="flex gap-3 text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">
+                                <span class="font-extrabold flex-shrink-0" style="color: var(--gold)">0{stepIndex + 1}</span>
+                                <span>
+                                  <strong class="text-white font-bold">{step.title}.</strong> {step.text}
+                                </span>
+                              </li>
+                            ))}
+                          </ol>
+                        )}
+                        {block.list && (
+                          <ul class="space-y-2 mt-4">
+                            {block.list.map((item) => (
+                              <li class="flex gap-3 text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">
+                                <span aria-hidden="true" style="color: var(--gold)">•</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {block.qa && (
+                          <div class="space-y-4 mt-4">
+                            {block.qa.map((item) => (
+                              <div>
+                                <p class="text-white font-bold text-sm mb-1">{item.question}</p>
+                                <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">{item.answer}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  }
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <h3 class="font-extrabold text-sm text-white uppercase tracking-wide mb-4">Vantagens</h3>
+                    <ul class="space-y-2">
+                      {
+                        technique.advantages.map((advantage) => (
+                          <li class="flex items-start gap-2 text-sm" style="color: rgba(255,255,255,0.72)">
+                            <svg
+                              class="w-4 h-4 flex-shrink-0 mt-0.5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              style="color: var(--gold)"
+                              aria-hidden="true"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            {advantage}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class="font-extrabold text-sm text-white uppercase tracking-wide mb-4">Cuidados</h3>
+                    <ul class="space-y-2">
+                      {
+                        technique.care.map((care) => (
+                          <li class="flex items-start gap-2 text-sm" style="color: rgba(255,255,255,0.72)">
+                            <span style="color: var(--gold)" class="font-bold flex-shrink-0" aria-hidden="true">
+                              →
+                            </span>
+                            {care}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class={`lg:col-span-2 space-y-4 ${index % 2 !== 0 ? 'md:order-1 lg:order-1' : ''}`}
+              >
+                <div
+                  class="rounded-2xl p-7 text-center"
+                  style="background: linear-gradient(135deg, var(--primary-deep), var(--primary))"
+                >
+                  <p class="text-white/70 text-xs font-bold uppercase tracking-wide mb-2">Tempo de aplicação</p>
+                  <p class="text-4xl font-extrabold text-white">{technique.duration}</p>
+                </div>
+                <div
+                  class="rounded-2xl p-7 text-center"
+                  style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22)"
+                >
+                  <p
+                    class="text-xs font-bold uppercase tracking-wide mb-2"
+                    style="color: rgba(255,255,255,0.72)"
+                  >
+                    Prazo de manutenção
+                  </p>
+                  <p class="text-3xl font-extrabold" style="color: var(--gold)">{technique.durability}</p>
+                </div>
+                <video
+                  src={technique.video}
+                  controls
+                  muted
+                  playsinline
+                  preload="metadata"
+                  class="w-full rounded-2xl"
+                  aria-label={`Vídeo da técnica ${technique.name}`}
+                ></video>
+                <a
+                  href={siteConfig.brand.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="button-primary w-full rounded-xl"
+                >
+                  Agendar avaliação
+                  <span class="sr-only">, abre em nova aba</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="tone-marsala section-standard"
+    >
+      <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <div class="h-px w-8" style="background: var(--gold)"></div>
+              <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--gold)">Processo</p>
+            </div>
+            <h2 class="section-title font-extrabold text-white mb-6">Avaliação e escolha da técnica ideal</h2>
+            <p class="leading-relaxed mb-6" style="color: rgba(255,255,255,0.72)">
+              Antes de qualquer procedimento, fazemos uma avaliação completa do seu cabelo: tipo, textura,
+              espessura, condições do couro cabeludo e o seu estilo de vida.
+            </p>
+            <p class="leading-relaxed" style="color: rgba(255,255,255,0.72)">
+              Só depois recomendamos a técnica ideal. Resultado natural é inegociável. Cada atendimento é
+              personalizado para a sua necessidade.
+            </p>
+          </div>
+
+          <ol class="space-y-4">
+            {
+              [
+                { step: '01', label: 'Avaliação', desc: 'Análise completa do cabelo natural' },
+                { step: '02', label: 'Recomendação', desc: 'Técnica ideal para o seu perfil' },
+                { step: '03', label: 'Aplicação', desc: 'Procedimento com cuidado profissional' },
+                { step: '04', label: 'Orientações', desc: 'Cuidados para prolongar os resultados' },
+              ].map((item) => (
+                <li
+                  class="flex items-center gap-5 rounded-2xl p-5"
+                  style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.06)"
+                >
+                  <span class="text-2xl font-extrabold flex-shrink-0" style="color: var(--gold)">
+                    {item.step}
+                  </span>
+                  <div>
+                    <p class="text-white font-bold text-sm">{item.label}</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.72)">{item.desc}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="tone-nude section-compact">
+      <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+        <h2 class="section-title font-extrabold text-white mb-4">Qual técnica é a sua?</h2>
+        <p class="text-white/95 mb-8">
+          Agende uma avaliação e descubra qual técnica combina com o seu cabelo, a sua rotina e o resultado
+          desejado.
+        </p>
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+        >
+          Agendar Avaliação Gratuita
+          <span class="sr-only">, abre em nova aba</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

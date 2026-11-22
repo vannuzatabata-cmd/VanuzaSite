@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+---
+
+<BaseLayout
+  title="Carrinho"
+  description="Revise os produtos escolhidos e envie o pedido pelo WhatsApp."
+  path="/loja/carrinho"
+  noindex
+>
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        <h1 class="page-title font-extrabold text-white mb-6">Carrinho</h1>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8">
+        <div id="carrinho-vazio" class="rounded-2xl p-8 text-center" style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22)">
+          <p class="mb-6" style="color: rgba(74,31,44,0.8)">O seu carrinho está vazio.</p>
+          <a href="/loja" class="button-secondary">Ir para a loja</a>
+        </div>
+
+        <div id="carrinho-itens" class="hidden space-y-4"></div>
+
+        <div id="carrinho-resumo" class="hidden mt-8 rounded-2xl p-6" style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22)">
+          <div class="flex items-center justify-between mb-6">
+            <p class="font-bold" style="color: #4A1F2C">Total</p>
+            <p class="text-2xl font-extrabold" style="color: #8C6B36" id="carrinho-total">0,00 €</p>
+          </div>
+          <p class="text-sm mb-6" style="color: rgba(74,31,44,0.8)">
+            O pedido é enviado pelo WhatsApp. Confirmamos disponibilidade, forma de pagamento e entrega antes de fechar.
+          </p>
+          <a id="carrinho-whatsapp" href={siteConfig.brand.whatsapp} target="_blank" rel="noopener noreferrer" class="button-primary w-full rounded-xl">
+            Enviar pedido pelo WhatsApp
+            <span class="sr-only">, abre em nova aba</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ whatsapp: siteConfig.brand.whatsapp }}>
+  const KEY = 'vs-carrinho';
+  const ler = () => {
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+  };
+  const gravar = (lista) => {
+    try { localStorage.setItem(KEY, JSON.stringify(lista)); } catch {}
+    window.dispatchEvent(new Event('carrinho-atualizado'));
+  };
+  const euro = (valor) => valor.toFixed(2).replace('.', ',') + ' €';
+
+  function desenhar() {
+    const lista = ler();
+    const vazio = document.getElementById('carrinho-vazio');
+    const itensEl = document.getElementById('carrinho-itens');
+    const resumo = document.getElementById('carrinho-resumo');
+    const totalEl = document.getElementById('carrinho-total');
+    const zap = document.getElementById('carrinho-whatsapp');
+
+    if (lista.length === 0) {
+      vazio.classList.remove('hidden');
+      itensEl.classList.add('hidden');
+      resumo.classList.add('hidden');
+      return;
+    }
+    vazio.classList.add('hidden');
+    itensEl.classList.remove('hidden');
+    resumo.classList.remove('hidden');
+    itensEl.innerHTML = '';
+
+    let total = 0;
+    lista.forEach((item, index) => {
+      total += item.preco * item.qty;
+      const linha = document.createElement('div');
+      linha.className = 'rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4';
+      linha.style.cssText = 'background:#F8F3ED;border:1px solid rgba(152,83,101,0.22)';
+      linha.innerHTML = `
+        <div>
+          <p class="font-bold" style="color:#4A1F2C"></p>
+          <p class="text-sm" style="color:rgba(74,31,44,0.8)"></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button type="button" data-menos class="rounded-lg px-3 py-1" style="border:1px solid rgba(152,83,101,0.3);color:#4A1F2C">−</button>
+          <span data-qty style="color:#4A1F2C"></span>
+          <button type="button" data-mais class="rounded-lg px-3 py-1" style="border:1px solid rgba(152,83,101,0.3);color:#4A1F2C">+</button>
+          <button type="button" data-remover class="text-sm font-bold" style="color:#8C6B36">Remover</button>
+        </div>`;
+      linha.querySelector('p').textContent = item.nome;
+      linha.querySelectorAll('p')[1].textContent = euro(item.preco);
+      linha.querySelector('[data-qty]').textContent = String(item.qty);
+      linha.querySelector('[data-mais]').addEventListener('click', () => { item.qty += 1; gravar(lista); desenhar(); });
+      linha.querySelector('[data-menos]').addEventListener('click', () => {
+        if (item.qty > 1) item.qty -= 1; else lista.splice(index, 1);
+        gravar(lista); desenhar();
+      });
+      linha.querySelector('[data-remover]').addEventListener('click', () => { lista.splice(index, 1); gravar(lista); desenhar(); });
+      itensEl.appendChild(linha);
+    });
+
+    totalEl.textContent = euro(total);
+    const texto = ['Olá! Gostaria de fazer este pedido:', ...lista.map((i) => `- ${i.nome} x${i.qty} (${euro(i.preco * i.qty)})`), `Total: ${euro(total)}`].join('\n');
+    zap.href = `${whatsapp}?text=${encodeURIComponent(texto)}`;
+  }
+
+  desenhar();
+  window.addEventListener('carrinho-atualizado', desenhar);
+</script>

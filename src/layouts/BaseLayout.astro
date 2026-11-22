@@ -1,0 +1,124 @@
+---
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import '@/styles/global.css';
+import {
+  BUSINESS_NAME,
+  DEFAULT_SOCIAL_IMAGE,
+  getCanonicalUrl,
+  getFullTitle,
+  siteStructuredData,
+} from '@/lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  structuredData,
+  noindex = false,
+} = Astro.props;
+
+const isDev = import.meta.env.DEV;
+const canonical = isDev
+  ? new URL(Astro.url.pathname, Astro.url.origin).toString()
+  : getCanonicalUrl(path);
+const fullTitle = getFullTitle(title);
+const pageSchemas = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
+const schemas = [siteStructuredData, ...pageSchemas];
+const robots = noindex || isDev
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+---
+
+<!doctype html>
+<html lang="pt-PT" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="application-name" content={BUSINESS_NAME} />
+    <meta name="creator" content="Vanuza Soares" />
+    <meta name="publisher" content={BUSINESS_NAME} />
+    <meta name="theme-color" content="#985365" />
+    <meta name="robots" content={robots} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="preload"
+      href="/fonts/montserrat-variable-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/android-chrome-192x192.png"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:site_name" content={BUSINESS_NAME} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={DEFAULT_SOCIAL_IMAGE.url} />
+    <meta property="og:image:width" content={String(DEFAULT_SOCIAL_IMAGE.width)} />
+    <meta property="og:image:height" content={String(DEFAULT_SOCIAL_IMAGE.height)} />
+    <meta property="og:image:alt" content={DEFAULT_SOCIAL_IMAGE.alt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={DEFAULT_SOCIAL_IMAGE.url} />
+  </head>
+  <body>
+    {schemas.map((schema) => (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+      />
+    ))}
+    <Header />
+    <slot />
+    <Footer />
+    <a
+      href="/loja/carrinho"
+      class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold shadow-lg"
+      style="background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 50%, #EBDCBF 100%); color: #3E1823"
+    >
+      Carrinho
+      <span id="cart-count" class="inline-flex min-w-6 justify-center rounded-full px-2 py-0.5 text-xs" style="background: #985365; color: #FFFFFF">0</span>
+    </a>
+    <script>
+      const contar = () => {
+        let total = 0;
+        try {
+          const lista = JSON.parse(localStorage.getItem('vs-carrinho') || '[]');
+          total = lista.reduce((soma, item) => soma + item.qty, 0);
+        } catch {}
+        const el = document.getElementById('cart-count');
+        if (el) el.textContent = String(total);
+      };
+      contar();
+      window.addEventListener('carrinho-atualizado', contar);
+      window.addEventListener('storage', contar);
+    </script>  </body>
+</html>

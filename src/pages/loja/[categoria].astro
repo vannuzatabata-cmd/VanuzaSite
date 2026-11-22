@@ -1,0 +1,132 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+import { lojaCategorias, produtos } from '@/data/loja';
+
+export function getStaticPaths() {
+  return lojaCategorias.map((categoria) => ({
+    params: { categoria: categoria.slug },
+    props: { categoria },
+  }));
+}
+
+const { categoria } = Astro.props;
+const itens = produtos.filter((p) => p.categoria === categoria.slug);
+const outraCategoria = lojaCategorias.find((c) => c.slug !== categoria.slug);
+---
+
+<BaseLayout
+  title={`${categoria.titulo} | Loja`}
+  description={categoria.descricao}
+  path={`/loja/${categoria.slug}`}
+>
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div class="page-hero-content relative max-w-5xl mx-auto px-5 sm:px-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">Loja</p>
+        <h1 class="page-title font-extrabold text-white mb-6">{categoria.titulo}</h1>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(255,255,255,0.75)">{categoria.descricao}</p>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[260px_1fr] gap-10">
+        <aside class="rounded-2xl p-6 h-fit" style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22)">
+          <p class="text-xs font-bold uppercase tracking-wide mb-4" style="color: #8C6B36">Categorias</p>
+          <ul class="space-y-2 mb-8">
+            {categoria.subcategorias.map((sub) => (
+              <li class="text-sm" style="color: #4A1F2C">{sub}</li>
+            ))}
+          </ul>
+
+          <p class="text-xs font-bold uppercase tracking-wide mb-4" style="color: #8C6B36">Filtros</p>
+          <div class="space-y-4">
+            {categoria.filtros.map((filtro) => (
+              <div>
+                <label class="block text-sm font-bold mb-1" style="color: #4A1F2C" for={`filtro-${filtro}`}>{filtro}</label>
+                <select
+                  id={`filtro-${filtro}`}
+                  class="w-full rounded-lg px-3 py-2 text-sm"
+                  style="background: #FFFFFF; border: 1px solid rgba(152,83,101,0.3); color: #4A1F2C"
+                  disabled
+                >
+                  <option>Em breve</option>
+                </select>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <div>
+          {itens.length > 0 ? (
+            <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {itens.map((p) => (
+                <article class="rounded-2xl p-5" style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22)">
+                  <img src={p.imagem} alt={p.nome} class="w-full aspect-square object-cover rounded-xl mb-4" loading="lazy" />
+                  <h2 class="text-lg font-extrabold mb-1" style="color: #4A1F2C">{p.nome}</h2>
+                  <p class="text-sm mb-3" style="color: rgba(74,31,44,0.8)">{p.descricao}</p>
+                  <p class="text-xl font-extrabold mb-4" style="color: #8C6B36">{p.preco.toFixed(2).replace('.', ',')} €</p>
+                  <button
+                    type="button"
+                    class="button-primary w-full rounded-xl"
+                    data-add-cart
+                    data-id={p.id}
+                    data-nome={p.nome}
+                    data-preco={p.preco}
+                    disabled={p.estoque <= 0}
+                  >
+                    {p.estoque > 0 ? 'Adicionar ao carrinho' : 'Esgotado'}
+                  </button>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="rounded-2xl p-8 sm:p-10 text-center" style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22)">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: #8C6B36">Em preparação</p>
+              <h2 class="section-title font-extrabold mb-4" style="color: #4A1F2C">Os produtos estão a ser preparados</h2>
+              <p class="leading-relaxed mb-8 max-w-xl mx-auto" style="color: rgba(74,31,44,0.8)">
+                Em breve esta categoria terá fotografias, preços e disponibilidade. Enquanto isso, fale connosco pelo
+                WhatsApp para saber o que está disponível.
+              </p>
+              <a href={siteConfig.brand.whatsapp} target="_blank" rel="noopener noreferrer" class="button-primary">
+                Falar pelo WhatsApp
+                <span class="sr-only">, abre em nova aba</span>
+              </a>
+            </div>
+          )}
+
+          <div class="mt-10 text-center">
+            {outraCategoria && (
+              <a href={`/loja/${outraCategoria.slug}`} class="font-bold text-sm" style="color: #8C6B36">
+                Ver {outraCategoria.nome} →
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const KEY = 'vs-carrinho';
+  const ler = () => {
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+  };
+  const gravar = (lista) => {
+    try { localStorage.setItem(KEY, JSON.stringify(lista)); } catch {}
+    window.dispatchEvent(new Event('carrinho-atualizado'));
+  };
+
+  document.querySelectorAll('[data-add-cart]').forEach((botao) => {
+    botao.addEventListener('click', () => {
+      const id = botao.dataset.id;
+      const lista = ler();
+      const existente = lista.find((item) => item.id === id);
+      if (existente) existente.qty += 1;
+      else lista.push({ id, nome: botao.dataset.nome, preco: Number(botao.dataset.preco), qty: 1 });
+      gravar(lista);
+      botao.textContent = 'Adicionado ✓';
+    });
+  });
+</script>

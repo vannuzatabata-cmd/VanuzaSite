@@ -1,0 +1,237 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+
+const title = 'Dúvidas sobre Extensão Capilar em Leiria';
+const description =
+  'Respostas sobre técnicas, aplicação, manutenção, cuidados, valores e agendamento de extensão capilar com Vanuza Soares em Leiria, Portugal.';
+
+const faqGroups = [
+  {
+    title: 'Escolha e avaliação',
+    items: [
+      {
+        question: 'Qual é a melhor técnica de extensão capilar?',
+        answer:
+          'A melhor técnica é a que combina com o cabelo natural, o resultado desejado e a rotina de cuidados. Microlink, Fita Adesiva e Ponto Americano usam formas diferentes de fixação. Vanuza avalia comprimento, densidade, textura, corte e hábitos antes de recomendar uma opção.',
+      },
+      {
+        question: 'É preciso fazer avaliação antes da aplicação?',
+        answer:
+          'Sim. A avaliação permite observar o cabelo de perto, alinhar expectativas e planear técnica, cor, textura, quantidade e acabamento. Fotos podem ajudar na conversa, mas não substituem a análise presencial.',
+      },
+      {
+        question: 'Cabelo curto ou fino pode receber extensão capilar?',
+        answer:
+          'Depende do comprimento, da densidade e das condições atuais do cabelo. É necessário ter cobertura suficiente para integrar as fixações e um plano compatível com a base natural. A possibilidade é confirmada somente depois da avaliação.',
+      },
+      {
+        question: 'Posso levar uma foto do resultado que desejo?',
+        answer:
+          'Pode. A referência ajuda a mostrar comprimento, volume, cor e estilo desejados. Ela será usada como ponto de conversa, e o plano final será adaptado ao cabelo disponível e ao acabamento possível no seu caso.',
+      },
+    ],
+  },
+  {
+    title: 'Aplicação, valor e duração',
+    items: [
+      {
+        question: 'Quanto custa colocar extensão capilar?',
+        answer:
+          'O valor é informado após entender o atendimento. Técnica, quantidade de cabelo, comprimento, cor, preparação e serviço necessário mudam de uma cliente para outra. Fale pelo WhatsApp para saber como agendar a avaliação e receber um orçamento adequado.',
+      },
+      {
+        question: 'Quanto tempo demora a aplicação?',
+        answer:
+          'O tempo varia conforme a técnica, a quantidade de mechas e o trabalho de preparação e finalização. A estimativa é apresentada depois que Vanuza conhece o resultado desejado e avalia o cabelo.',
+      },
+      {
+        question: 'Quanto tempo a extensão capilar dura?',
+        answer:
+          'Não existe um prazo único. É importante separar a conservação das mechas do intervalo de manutenção da fixação. Crescimento da raiz, técnica, rotina e cuidados influenciam o retorno. A orientação individual é dada no atendimento.',
+      },
+      {
+        question: 'Preciso comprar o cabelo antes?',
+        answer:
+          'Confirme antes de comprar. Cor, textura, comprimento, peso e tipo de montagem precisam combinar com a técnica e com o cabelo natural. Uma escolha antecipada sem avaliação pode não atender ao planeamento.',
+      },
+    ],
+  },
+  {
+    title: 'Cuidados e manutenção',
+    items: [
+      {
+        question: 'Posso lavar o cabelo normalmente?',
+        answer:
+          'Sim, seguindo a orientação da técnica aplicada. Em geral, é importante evitar fricção e puxões nas fixações, enxaguar bem e secar completamente a raiz. A forma de usar produtos perto da base também pode mudar entre Microlink, Fita Adesiva e Ponto Americano.',
+      },
+      {
+        question: 'Posso dormir com a extensão capilar molhada?',
+        answer:
+          'Não é recomendado dormir com a raiz ou as fixações úmidas. A umidade prolongada dificulta o cuidado da região e pode favorecer embaraço. Seque com atenção e organize o cabelo de acordo com a orientação recebida.',
+      },
+      {
+        question: 'Posso usar secador, alisador ou modelador?',
+        answer:
+          'O uso deve respeitar o cabelo aplicado e manter o calor direto longe das fixações, especialmente das bases adesivas. Temperatura, proteção e forma de manuseio importam. Pergunte no atendimento quais cuidados são adequados ao seu material.',
+      },
+      {
+        question: 'Quando devo procurar manutenção?',
+        answer:
+          'Siga o retorno orientado e entre em contacto antes se notar soltura, mudança de posição, dificuldade de higienização ou desconforto persistente. Não tente colar, apertar, cortar ou retirar fixações em casa.',
+      },
+      {
+        question: 'Vanuza faz manutenção aplicada por outra profissional?',
+        answer:
+          'O caso precisa ser avaliado primeiro. Informe a técnica, a data aproximada da aplicação e o que precisa ser corrigido. Fotos podem ajudar na triagem, mas a confirmação do serviço depende da análise da aplicação e das mechas.',
+      },
+    ],
+  },
+  {
+    title: 'Local, agenda e cursos',
+    items: [
+      {
+        question: 'Onde fica o espaço de Vanuza Soares?',
+        answer: `O atendimento acontece em Leiria, Portugal. O atendimento é feito com hora marcada.`,
+      },
+      {
+        question: 'Como faço para agendar?',
+        answer:
+          'Chame pelo WhatsApp e explique se procura avaliação, aplicação ou manutenção. Se já usa extensão capilar, informe a técnica e a data aproximada do último atendimento. A disponibilidade é confirmada diretamente na conversa.',
+      },
+      {
+        question: 'Há cursos de extensão capilar?',
+        answer:
+          'O site apresenta cursos com Vanuza Soares. Conteúdo, formato, próximas turmas, requisitos e disponibilidade devem ser confirmados pelos canais oficiais antes da inscrição.',
+      },
+    ],
+  },
+];
+
+const faqStructuredData: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  ),
+};
+
+const serviceLinks = [
+  ['Microlink', '/tecnicas#microlink'],
+  ['Fita Adesiva', '/tecnicas#fita-adesiva'],
+  ['Ponto Americano', '/tecnicas#ponto-americano'],
+  ['Manutenção', '/servicos/manutencao'],
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/perguntas-frequentes"
+  structuredData={faqStructuredData}
+>
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 50% 65%, rgba(152,73,92,0.27), transparent 62%)"
+      ></div>
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">
+          Informação antes da decisão
+        </p>
+        <h1 class="page-title font-extrabold text-white mb-6">
+          Perguntas frequentes sobre extensão capilar
+        </h1>
+        <p
+          class="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto"
+          style="color: rgba(255,255,255,0.68)"
+        >
+          Respostas objetivas sobre avaliação, técnicas, aplicação, cuidados e manutenção. Quando a
+          resposta depende do cabelo, a confirmação é feita presencialmente em Leiria, Portugal.
+        </p>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <nav aria-label="Atalhos para serviços" class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {serviceLinks.map(([label, href]) => (
+            <a
+              href={href}
+              class="rounded-xl px-5 py-4 text-sm font-bold text-center transition-colors hover:border-white/20"
+              style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45); color: rgba(255,255,255,0.78)"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </section>
+
+    <section class="tone-marsala pb-16 sm:pb-20">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8 space-y-12">
+        {faqGroups.map((group) => (
+          <section>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="h-px w-8" style="background: var(--gold)"></div>
+              <h2 class="text-white text-2xl sm:text-3xl font-extrabold">{group.title}</h2>
+            </div>
+            <div class="space-y-3">
+              {group.items.map((item) => (
+                <details
+                  class="group rounded-2xl p-5 sm:p-6"
+                  style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+                >
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4 text-white font-extrabold">
+                    <span>{item.question}</span>
+                    <span
+                      aria-hidden="true"
+                      class="text-xl leading-none group-open:rotate-45 transition-transform"
+                      style="color: var(--gold)"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p
+                    class="pt-4 pr-6 text-sm sm:text-base leading-relaxed max-w-[68ch]"
+                    style="color: rgba(255,255,255,0.72)"
+                  >
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <section class="tone-nude section-compact">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+        <h2 class="section-title text-white font-extrabold mb-4">A sua dúvida é específica?</h2>
+        <p class="text-white/90 leading-relaxed mb-8">
+          Fale diretamente com a Vanuza pelo WhatsApp. Para conhecer o trabalho antes, veja os
+          <a href="/resultados" class="underline underline-offset-4">resultados publicados</a> e a
+          <a href="/vanuza-soares" class="underline underline-offset-4">trajetória profissional</a>.
+        </p>
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+          style="background: linear-gradient(135deg, #A88070, #C6A15B 55%, #EBDCBF)"
+        >
+          Perguntar pelo WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

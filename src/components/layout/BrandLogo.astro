@@ -1,0 +1,59 @@
+---
+interface Props {
+  variant?: 'wordmark' | 'full';
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+}
+
+const {
+  variant = 'wordmark',
+  alt = 'Vanuza Soares Extensões',
+  class: className,
+  loading = 'lazy',
+  fetchpriority,
+  decoding = 'async',
+} = Astro.props;
+
+const assets = {
+  wordmark: {
+    avif: '/brand/vanuza-soares-wordmark-light-320.avif 320w, /brand/vanuza-soares-wordmark-light-400.avif 400w',
+    webp: '/brand/vanuza-soares-wordmark-light-320.webp 320w, /brand/vanuza-soares-wordmark-light-400.webp 400w',
+    fallbackSrcSet: '/brand/vanuza-soares-wordmark-light-320.png 320w, /brand/vanuza-soares-wordmark-light-400.png 400w',
+    fallback: '/brand/vanuza-soares-wordmark-light-400.png',
+    sizes: '(min-width: 1280px) 194px, (min-width: 1024px) 176px, (min-width: 640px) 184px, 168px',
+    width: 400,
+    height: 82,
+  },
+  full: {
+    avif: '/brand/vanuza-soares-logo-light-320.avif 320w, /brand/vanuza-soares-logo-light-480.avif 480w',
+    webp: '/brand/vanuza-soares-logo-light-320.webp 320w, /brand/vanuza-soares-logo-light-480.webp 480w',
+    fallbackSrcSet: '/brand/vanuza-soares-logo-light-320.png 320w, /brand/vanuza-soares-logo-light-480.png 480w',
+    fallback: '/brand/vanuza-soares-logo-light-480.png',
+    sizes: '(min-width: 640px) 192px, 176px',
+    width: 480,
+    height: 287,
+  },
+} as const;
+
+const asset = assets[variant];
+---
+
+<picture>
+  <source srcset={asset.avif} sizes={asset.sizes} type="image/avif" />
+  <source srcset={asset.webp} sizes={asset.sizes} type="image/webp" />
+  <img
+    src={asset.fallback}
+    srcset={asset.fallbackSrcSet}
+    sizes={asset.sizes}
+    width={asset.width}
+    height={asset.height}
+    alt={alt}
+    class={className}
+    loading={loading}
+    decoding={decoding}
+    fetchpriority={fetchpriority}
+  />
+</picture>

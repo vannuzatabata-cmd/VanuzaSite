@@ -1,0 +1,188 @@
+---
+import { siteConfig } from '@/data/site';
+
+interface Course {
+  badge: string;
+  name: string;
+  details: string;
+  desc: string;
+  highlights: string[];
+  iconPath: string;
+  featured?: boolean;
+  viewMoreLink?: string;
+}
+
+const courses: Course[] = [
+  {
+    badge: 'Iniciante',
+    name: 'Microlink',
+    details: 'Sob consulta',
+    desc: 'Formação apresentada para quem deseja conhecer os fundamentos e as etapas da técnica de Microlink.',
+    highlights: ['Programa sob consulta', 'Formato e duração sob consulta', 'Datas e investimento sob consulta'],
+    iconPath: 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244',
+  },
+  {
+    badge: 'Intermediário',
+    name: 'Fita Adesiva',
+    details: 'Sob consulta',
+    desc: 'Conteúdo voltado à aplicação, aos cuidados e ao reposicionamento profissional da Fita Adesiva.',
+    highlights: ['Programa sob consulta', 'Formato e duração sob consulta', 'Datas e investimento sob consulta'],
+    iconPath: 'M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42',
+  },
+  {
+    badge: 'Formação Completa',
+    name: 'Curso Completo',
+    details: 'Sob consulta',
+    desc: 'Formação apresentada com Microlink, Fita Adesiva e Ponto Americano. Confirme o programa atualizado antes da inscrição.',
+    highlights: ['Três técnicas apresentadas', 'Programa atualizado sob consulta', 'Datas e investimento sob consulta'],
+    featured: true,
+    viewMoreLink: '/cursos',
+    iconPath: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5',
+  },
+];
+---
+
+<section
+  class="tone-nude section-standard relative overflow-hidden"
+>
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse at 80% 50%, rgba(152,73,92,0.15) 0%, transparent 60%);"
+  ></div>
+  <div
+    class="absolute left-0 right-0 top-0 h-px"
+    style="background: linear-gradient(90deg, transparent, rgba(198,161,91,0.3), transparent);"
+  ></div>
+
+  <div class="site-container relative">
+    <div class="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+      <h2 class="section-title font-extrabold text-white">Cursos e formações</h2>
+      <a
+        href="/cursos"
+        class="whitespace-nowrap border-b pb-0.5 text-sm font-bold transition-opacity hover:opacity-70"
+        style="color: var(--gold); border-color: rgba(198,161,91,0.3);"
+      >
+        Ver todos os cursos →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">
+      {courses.map((course) => (
+        <div
+          class="group relative flex flex-col overflow-hidden rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 lg:p-7"
+          style={course.featured
+            ? 'background: linear-gradient(145deg, #985365 0%, #985365 100%); box-shadow: 0 16px 60px rgba(152,73,92,0.4); border: 1px solid rgba(255,255,255,0.1);'
+            : 'background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22);'}
+        >
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style="background: linear-gradient(135deg, rgba(96,36,56,0.45) 0%, transparent 50%);"
+          ></div>
+
+          {course.featured && (
+            <div
+              class="absolute right-6 top-0 rounded-b-lg px-3 py-1 text-[10px] font-extrabold text-white"
+              style="background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 28%, #F1E4CB 50%, #C6A15B 72%, #9C7A4C 100%);"
+            >
+              Mais completo
+            </div>
+          )}
+
+          <div class="mb-6 mt-2 flex items-center justify-between">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-xl"
+              style={course.featured
+                ? 'background: rgba(255,255,255,0.15); color: #fff;'
+                : 'background: rgba(152,73,92,0.2); color: var(--gold);'}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-6 w-6" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d={course.iconPath}></path>
+              </svg>
+            </div>
+            <span
+              class="rounded-full px-3 py-1.5 text-[10px] font-bold"
+              style={course.featured
+                ? 'background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);'
+                : 'background: rgba(198,161,91,0.1); color: var(--gold);'}
+            >
+              {course.badge}
+            </span>
+          </div>
+
+          <div class="mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <h3 class="text-2xl font-extrabold text-white">{course.name}</h3>
+            <span
+              class="text-sm font-bold"
+              style={course.featured ? 'color: rgba(255,255,255,0.6);' : 'color: var(--gold);'}
+            >
+              {course.details}
+            </span>
+          </div>
+
+          <p
+            class="mb-6 flex-grow text-sm leading-relaxed"
+            style={course.featured ? 'color: rgba(255,255,255,0.75);' : 'color: rgba(255,255,255,0.5);'}
+          >
+            {course.desc}
+          </p>
+
+          <ul class="mb-8 space-y-2">
+            {course.highlights.map((highlight) => (
+              <li
+                class="flex items-center gap-2 text-xs font-semibold"
+                style={course.featured ? 'color: rgba(255,255,255,0.8);' : 'color: rgba(255,255,255,0.5);'}
+              >
+                <svg
+                  class="h-3.5 w-3.5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style={course.featured ? 'color: rgba(198,161,91,0.9);' : 'color: var(--gold);'}
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {highlight}
+              </li>
+            ))}
+          </ul>
+
+          <div class="space-y-3">
+            <a
+              href={siteConfig.brand.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={course.featured
+                ? 'button-primary w-full'
+                : 'inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/15 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/5'}
+              style={course.featured
+                ? undefined
+                : 'background: rgba(96,36,56,0.45); color: #fff; border: 1px solid rgba(255,255,255,0.12);'}
+            >
+              Consultar informações
+            </a>
+
+            {course.featured && course.viewMoreLink && (
+              <a
+                href={course.viewMoreLink}
+                class="block rounded-lg border py-2.5 text-center text-xs font-bold text-white transition-all hover:bg-white/5"
+                style="border-color: rgba(184,148,95,0.3);"
+              >
+                Ver mais detalhes →
+              </a>
+            )}
+          </div>
+
+          <div
+            class="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+            style="background: linear-gradient(90deg, var(--gold), transparent);"
+          ></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/cursos" class="button-primary">Ver informações dos cursos</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+---
+import DifferentialIcon from './DifferentialIcon.astro';
+
+const items = [
+  {
+    title: 'Atendimento Personalizado',
+    desc: 'Cada cliente recebe uma avaliação cuidadosa para encontrar a técnica ideal para o seu cabelo e estilo.',
+    icon: 'atendimento',
+  },
+  {
+    title: 'Acabamento Natural',
+    desc: 'O objetivo é unir beleza, conforto e um resultado harmonioso, com fios que parecem parte do seu cabelo.',
+    icon: 'acabamento',
+  },
+  {
+    title: 'Técnicas Profissionais',
+    desc: 'Aplicação com método, cuidado e atenção aos detalhes em cada etapa do procedimento.',
+    icon: 'tecnicas',
+  },
+  {
+    title: 'Experiência Real de Mercado',
+    desc: 'Mais de 10 anos de atuação ajudando mulheres a transformarem o visual com mais segurança e qualidade.',
+    icon: 'experiencia',
+  },
+  {
+    title: 'Cuidado com a Autoestima',
+    desc: 'Mais do que alongar os fios, o trabalho valoriza presença, confiança e bem-estar de cada cliente.',
+    icon: 'autoestima',
+  },
+  {
+    title: 'Resultados que Respeitam o seu Estilo',
+    desc: 'Cada transformação busca combinar com o perfil, a rotina e as expectativas de cada cliente.',
+    icon: 'resultados',
+  },
+];
+---
+
+<section
+  class="tone-nude section-standard relative overflow-hidden"
+>
+  <div class="site-container">
+    <div class="mb-12 text-center">
+      <h2 class="section-title font-extrabold text-white">
+        Por que escolher <span style="color: var(--secondary);">Vanuza Soares?</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item) => (
+        <div
+          class="group relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 sm:p-7"
+          style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22);"
+        >
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style="background: linear-gradient(135deg, rgba(96,36,56,0.45) 0%, transparent 50%);"
+          ></div>
+
+          <div
+            class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-200 group-hover:-translate-y-0.5"
+            style="background: rgba(152,73,92,0.25); color: var(--gold);"
+          >
+            <DifferentialIcon name={item.icon} class="h-9 w-9" />
+
+          </div>
+
+          <h3 class="mb-2 text-lg font-extrabold text-white">{item.title}</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72);">{item.desc}</p>
+
+          <div
+            class="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+            style="background: linear-gradient(90deg, var(--gold), transparent);"
+          ></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

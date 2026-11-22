@@ -1,0 +1,103 @@
+---
+import { siteConfig } from '@/data/site';
+---
+
+<section class="tone-marsala relative w-full overflow-hidden">
+  <div class="hero-photo absolute inset-y-0 right-0 w-full lg:w-[72%]" aria-hidden="true">
+    <img
+      src="/images/hero-capa.webp"
+      srcset="/images/hero-capa-800.webp 800w, /images/hero-capa-1200.webp 1200w, /images/hero-capa.webp 1600w"
+      sizes="(min-width: 1024px) 72vw, 100vw"
+      alt=""
+      width="1600"
+      height="2400"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      class="absolute top-[-5%] right-0 h-auto w-[166%] max-w-none lg:h-[175%] lg:w-auto"
+    />
+  </div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 lg:grid-cols-12 lg:gap-14 lg:pb-24 lg:pt-32">
+    <div class="order-2 lg:order-1 lg:col-span-6 lg:pl-10 xl:pl-16">
+      <div class="mb-8 flex items-center gap-3">
+        <div class="h-px w-10 bg-[#C6A15B]"></div>
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#EBDCBF]">
+          Extensão capilar em Leiria, Portugal
+        </span>
+      </div>
+
+      <h1 class="hero-title mb-6 font-extrabold text-white">
+        Extensão capilar em Leiria.
+        <span class="block text-[#F3E5E3]">
+          Acabamento natural, pensado para si.
+        </span>
+      </h1>
+
+      <p class="mb-10 font-medium leading-relaxed text-white/85" style="font-size: clamp(1rem, 2vw, 1.25rem); max-width: 520px;">
+        Microlink, Fita Adesiva e Ponto Americano com avaliação personalizada e cuidado em cada etapa.
+      </p>
+
+      <div class="flex flex-wrap gap-3 sm:gap-4">
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-btn hero-btn-primary"
+        >
+          Agendar pelo WhatsApp
+        </a>
+        <a href="/resultados" class="hero-btn hero-btn-secondary">
+          Ver Transformações
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Foto de capa atrás do texto, com 60% de transparência (opacidade 40%) */
+  .hero-photo {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-btn {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+  .hero-btn-primary {
+    background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 26%, #F3E8D2 50%, #C6A15B 74%, #9C7A4C 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 18px rgba(92, 38, 54, 0.18);
+    color: #3E1823;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    transition: background-position 600ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+  .hero-btn-primary:hover {
+    background-position: 0 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 26px rgba(92, 38, 54, 0.24);
+    transform: translateY(-2px);
+  }
+  .hero-btn-secondary {
+    border: 1px solid rgba(243, 229, 227, 0.7);
+    background: transparent;
+    color: #fff;
+  }
+  .hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #F3E5E3;
+  }
+</style>

@@ -1,0 +1,282 @@
+---
+import { resultImages } from '@/data/gallery';
+
+const images = resultImages.slice(0, 6);
+const firstImage = images[0];
+const getResponsiveSrcSet = (src: string) => {
+  const base = src.slice(0, -5);
+  return `${base}-320.webp 320w, ${base}-480.webp 480w, ${base}-800.webp 800w, ${src} 1200w`;
+};
+---
+
+<section
+  class="tone-nude section-standard relative overflow-hidden"
+>
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse at 50% 0%, rgba(152,73,92,0.2) 0%, transparent 60%);"
+  ></div>
+
+  <div class="site-container relative">
+    <div class="mb-12 text-center">
+      <div class="mb-4 flex items-center justify-center gap-3">
+        <div class="h-px w-8" style="background: var(--gold);"></div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--gold);">
+          Prova Real
+        </p>
+        <div class="h-px w-8" style="background: var(--gold);"></div>
+      </div>
+      <h2 class="section-title mb-4 font-extrabold text-white">
+        Transformações que falam por si só
+      </h2>
+      <p class="mx-auto max-w-xl text-base leading-relaxed text-white/70">
+        Resultados reais de clientes que confiaram na especialista. Cada foto é uma história de
+        autoestima transformada.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-4">
+      {images.map((image, index) => (
+        <button
+          type="button"
+          aria-label={`Ampliar imagem: ${image.alt}`}
+          class="group relative block aspect-square w-full cursor-zoom-in overflow-hidden rounded-xl"
+          data-result-trigger
+          data-result-index={index}
+          data-result-src={image.src}
+          data-result-alt={image.alt}
+        >
+          <img
+            src={image.src}
+            srcset={getResponsiveSrcSet(image.src)}
+            sizes="(min-width: 1280px) 400px, (min-width: 768px) calc(33vw - 1.5rem), calc(50vw - 1.5rem)"
+            alt={image.alt}
+            width="1200"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <span
+            class="absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style="background: linear-gradient(to top, rgba(144,73,92,0.85) 0%, transparent 50%);"
+            aria-hidden="true"
+          >
+            <span class="text-xs font-bold tracking-wide text-white">@vanuzasoaresextensoes</span><span class="block text-xs font-bold tracking-wide text-white">@extensaocapilarportugal_leiria</span>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    {firstImage && (
+      <dialog
+        data-results-dialog
+        aria-labelledby="results-dialog-title"
+        aria-describedby="results-dialog-instructions"
+      >
+        <div class="relative w-full max-w-4xl" data-dialog-panel>
+          <h3 id="results-dialog-title" class="sr-only" data-dialog-title aria-live="polite">
+            {`Imagem 1 de ${images.length}: ${firstImage.alt}`}
+          </h3>
+          <p id="results-dialog-instructions" class="sr-only">
+            Use as setas para navegar pelas imagens. Prima Escape para fechar.
+          </p>
+
+          <img
+            data-dialog-image
+            src={firstImage.src.replace('.webp', '-320.webp')}
+            alt={firstImage.alt}
+            width="1200"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            class="max-h-[calc(100dvh-7rem)] w-full rounded-xl object-contain"
+          />
+
+          <button
+            type="button"
+            data-dialog-close
+            class="absolute -top-12 right-0 flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
+            aria-label="Fechar imagem ampliada"
+          >
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            data-dialog-previous
+            class="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-white transition-colors hover:text-gray-300 sm:left-0 sm:-translate-x-16"
+            style="background: rgba(96,36,56,0.4);"
+            aria-label="Imagem anterior"
+            hidden
+          >
+            <svg class="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            data-dialog-next
+            class="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-white transition-colors hover:text-gray-300 sm:right-0 sm:translate-x-16"
+            style="background: rgba(96,36,56,0.4);"
+            aria-label="Próxima imagem"
+          >
+            <svg class="h-6 w-6 sm:h-8 sm:w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </dialog>
+    )}
+
+    <div class="mt-8 flex flex-col justify-center gap-4 text-center sm:flex-row">
+      <a href="/resultados" class="button-primary">Ver galeria completa</a>
+      <a
+        href="https://instagram.com/vanuzasoaresextensoes"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button-secondary"
+      >
+        Seguir no Instagram
+      </a>
+      <a href="https://www.instagram.com/extensaocapilarportugal_leiria?jplx=MXdibTV0N2ZjZHZh&utm_source=qr" target="_blank" rel="noopener noreferrer" class="button-secondary">Seguir @extensaocapilarportugal_leiria</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  dialog[data-results-dialog] {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 4rem 1rem 1rem;
+    border: 0;
+    background: transparent;
+    color: white;
+    overscroll-behavior: contain;
+  }
+
+  dialog[data-results-dialog][open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  dialog[data-results-dialog]::backdrop {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  dialog[data-results-dialog] [hidden] {
+    display: none !important;
+  }
+
+  @media (min-width: 640px) {
+    dialog[data-results-dialog] {
+      padding-inline: 5rem;
+    }
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-results-dialog]');
+  const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-result-trigger]'));
+  const dialogImage = dialog?.querySelector<HTMLImageElement>('[data-dialog-image]');
+  const dialogTitle = dialog?.querySelector<HTMLElement>('[data-dialog-title]');
+  const closeButton = dialog?.querySelector<HTMLButtonElement>('[data-dialog-close]');
+  const previousButton = dialog?.querySelector<HTMLButtonElement>('[data-dialog-previous]');
+  const nextButton = dialog?.querySelector<HTMLButtonElement>('[data-dialog-next]');
+
+  if (dialog && dialogImage && dialogTitle && closeButton && previousButton && nextButton && triggers.length > 0) {
+    const items = triggers.map((trigger) => ({
+      src: trigger.dataset.resultSrc ?? '',
+      alt: trigger.dataset.resultAlt ?? '',
+    }));
+
+    let currentIndex = 0;
+    let lastTrigger: HTMLButtonElement | null = null;
+    let previousBodyOverflow = '';
+
+    const renderImage = () => {
+      const item = items[currentIndex];
+      if (!item) return;
+
+      dialogImage.src = item.src;
+      dialogImage.alt = item.alt;
+      dialogTitle.textContent = `Imagem ${currentIndex + 1} de ${items.length}: ${item.alt}`;
+      previousButton.hidden = currentIndex === 0;
+      nextButton.hidden = currentIndex === items.length - 1;
+    };
+
+    const closeDialog = () => {
+      if (dialog.open) dialog.close();
+    };
+
+    const openDialog = (index: number, trigger: HTMLButtonElement) => {
+      currentIndex = index;
+      lastTrigger = trigger;
+      renderImage();
+
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+      requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+    };
+
+    const showPrevious = () => {
+      if (currentIndex === 0) return;
+      currentIndex -= 1;
+      renderImage();
+      if (previousButton.hidden) nextButton.focus({ preventScroll: true });
+    };
+
+    const showNext = () => {
+      if (currentIndex === items.length - 1) return;
+      currentIndex += 1;
+      renderImage();
+      if (nextButton.hidden) previousButton.focus({ preventScroll: true });
+    };
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => openDialog(index, trigger));
+    });
+
+    closeButton.addEventListener('click', closeDialog);
+    previousButton.addEventListener('click', showPrevious);
+    nextButton.addEventListener('click', showNext);
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) closeDialog();
+    });
+
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeDialog();
+    });
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showPrevious();
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        showNext();
+      }
+    });
+
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = previousBodyOverflow;
+      const triggerToRestore = lastTrigger;
+      lastTrigger = null;
+      requestAnimationFrame(() => triggerToRestore?.focus({ preventScroll: true }));
+    });
+  }
+</script>

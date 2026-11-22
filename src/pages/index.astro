@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import IntroStory from '@/components/home/IntroStory.astro';
+import TechniquesPreview from '@/components/home/TechniquesPreview.astro';
+import ResultsPreview from '@/components/home/ResultsPreview.astro';
+import Reviews from '@/components/home/Reviews.astro';
+import Differentials from '@/components/home/Differentials.astro';
+import HomeFAQ from '@/components/home/HomeFAQ.astro';
+import FinalCTA from '@/components/home/FinalCTA.astro';
+import { metadata } from '@/data/site';
+---
+
+<BaseLayout title={metadata.home.title} description={metadata.home.description} path="/">
+  <main>
+    <Hero />
+    <IntroStory />
+    <TechniquesPreview />
+    <ResultsPreview />
+    <Reviews />
+    <Differentials />
+    <HomeFAQ />
+    <FinalCTA />
+  </main>
+</BaseLayout>

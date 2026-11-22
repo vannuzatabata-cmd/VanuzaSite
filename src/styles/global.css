@@ -1,0 +1,379 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Montserrat Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/montserrat-variable-latin.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ─── CSS Variables ─────────────────────────────────────────────── */
+:root {
+  --primary:       #985365;
+  --primary-deep:  #985365;
+  --secondary:     #B37E85;
+  --tertiary:      #A88070;
+  --dark:          #1a0f14;
+  --charcoal:      #2a1a20;
+  --gold:          #C6A15B;
+  --gold-light:    #EBDCBF;
+  --cream:         #fdf8f2;
+  --light:         #f8f3f5;
+  --blush:         #f5e8eb;
+  --section-space: clamp(3.5rem, 6vw, 5rem);
+  --section-space-compact: clamp(2.5rem, 4vw, 3.5rem);
+  --page-title-size: clamp(2.35rem, 5.4vw, 4.35rem);
+  --section-title-size: clamp(1.85rem, 3.4vw, 2.9rem);
+}
+
+/* ─── Base Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #985365;
+  color: #fff;
+  font-family: 'Montserrat Variable', Montserrat, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography ────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+/* ─── Selection ─────────────────────────────────────────────────── */
+::selection      { background: var(--primary); color: #fff; }
+::-moz-selection { background: var(--primary); color: #fff; }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar              { width: 8px; }
+::-webkit-scrollbar-track        { background: #985365; }
+::-webkit-scrollbar-thumb        { background: var(--primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--secondary); }
+
+/* ─── Utility ───────────────────────────────────────────────────── */
+img { max-width: 100%; height: auto; display: block; }
+
+:where(a, button, summary, input, textarea, select):focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* ─── Text Gradient ─────────────────────────────────────────────── */
+.text-gradient-gold {
+  color: var(--gold-light);
+}
+
+.text-gradient-brand {
+  color: var(--secondary);
+}
+
+/* ─── Layout system ─────────────────────────────────────────────── */
+.site-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.reading-container {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section-standard { padding-block: var(--section-space); }
+.section-compact { padding-block: var(--section-space-compact); }
+
+.page-hero-content {
+  padding-top: clamp(7rem, 10vw, 8rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.page-title {
+  font-size: var(--page-title-size);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.hero-title {
+  font-size: clamp(2.35rem, 4.6vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.section-title {
+  font-size: var(--section-title-size);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.eyebrow {
+  color: var(--gold-light);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.button-primary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 26%, #F3E8D2 50%, #C6A15B 74%, #9C7A4C 100%) !important;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 18px rgba(92, 38, 54, 0.18);
+  color: #4A1F2C !important;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: background-position 600ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.button-primary:hover {
+  background-position: 0 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 26px rgba(92, 38, 54, 0.24);
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid #985365;
+  border-radius: 9999px;
+  background: #F7ECE6;
+  color: #4A1F2C;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.button-secondary:hover {
+  border-color: #5C2636;
+  background: #EFDCD3;
+}
+
+@media (min-width: 640px) {
+  .site-container,
+  .reading-container {
+    padding-inline: 2rem;
+  }
+}
+
+/* ─── Gold Accent Line ──────────────────────────────────────────── */
+.accent-line {
+  display: inline-block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border-radius: 2px;
+}
+
+/* ─── Card Premium ──────────────────────────────────────────────── */
+.card-premium {
+  background: #fff;
+  border: 1px solid rgba(152,73,92,0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  overflow: hidden;
+}
+.card-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(152,73,92,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.card-premium:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(152,73,92,0.15);
+  border-color: rgba(152,73,92,0.25);
+}
+
+/* ─── Dark Card ─────────────────────────────────────────────────── */
+.card-dark {
+  background: rgba(96,36,56,0.45);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(10px);
+}
+.card-dark:hover {
+  background: rgba(96,36,56,0.45);
+  border-color: rgba(198,161,91,0.25);
+  transform: translateY(-3px);
+}
+
+/* ─── Section Divider ───────────────────────────────────────────── */
+.divider-gold {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider-gold::before,
+.divider-gold::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,161,91,0.4), transparent);
+}
+
+/* ─── Glow effects ──────────────────────────────────────────────── */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(152,73,92,0.2);
+}
+
+/* ─── Number Highlight ──────────────────────────────────────────── */
+.stat-number {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+/* ─── Overlay helpers ───────────────────────────────────────────── */
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(144,73,92,0.97) 0%,
+    rgba(144,73,92,0.85) 45%,
+    rgba(144,73,92,0.4)  70%,
+    rgba(144,73,92,0.15) 100%
+  );
+  z-index: 1;
+}
+
+/* ─── Animations ────────────────────────────────────────────────── */
+/* ─── Form Dark Override ─────────────────────────────────────────── */
+input, textarea, select {
+  color-scheme: dark;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #985365 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Identidade: alternância marsala claro / nude rosado ─────────── */
+.tone-marsala {
+  background-color: #985365 !important;
+  background-image: none !important;
+  color: #fff;
+}
+.tone-nude {
+  background-color: #F3E5E3 !important;
+  background-image: none !important;
+  color: #4A1F2C;
+}
+.tone-nude .text-white,
+.tone-nude h1,
+.tone-nude h2,
+.tone-nude h3,
+.tone-nude h4 {
+  color: #4A1F2C !important;
+}
+.tone-nude [class*="text-white/"] {
+  color: rgba(74, 31, 44, 0.8) !important;
+}
+.tone-nude [style*="color: rgba(255,255,255"] {
+  color: rgba(74, 31, 44, 0.85) !important;
+}
+.tone-nude [style*="color: var(--gold)"] {
+  color: #8C6B36 !important;
+}
+.tone-nude .card-dark,
+.tone-nude [style*="background: rgba(96,36,56"] {
+  background: #F8F3ED !important;
+  border-color: rgba(152, 83, 101, 0.22) !important;
+}
+.tone-nude [style*="background: rgba(255,255,255"] {
+  background: rgba(152, 83, 101, 0.07) !important;
+}
+.tone-nude [style*="border: 1px solid rgba(255,255,255"],
+.tone-nude [style*="border: 1px solid rgba(96,36,56"] {
+  border-color: rgba(152, 83, 101, 0.22) !important;
+}
+
+/* Formulário dentro de secção nude: campos claros */
+.tone-nude .contact-field {
+  background: #FFFFFF !important;
+  color: #4A1F2C !important;
+  border-color: rgba(152, 83, 101, 0.3) !important;
+  color-scheme: light;
+}
+.tone-nude .contact-field::placeholder {
+  color: rgba(74, 31, 44, 0.5);
+}
+.tone-nude option {
+  background: #FFFFFF;
+  color: #4A1F2C;
+}
+
+/* ─── Ícone do WhatsApp nos botões e links de contato ───────────── */
+a[href^="https://wa.me/"]::before,
+.with-wa-icon::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.1em;
+  vertical-align: -0.2em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Cartões da Loja dentro de secções nude: texto claro sobre fundo marsala */
+.tone-nude .loja-card .loja-titulo { color: #FFFFFF !important; }
+.tone-nude .loja-card .loja-texto { color: rgba(255,255,255,0.88) !important; }
+.tone-nude .loja-card .loja-eyebrow, .tone-nude .loja-card .loja-acao { color: #EBDCBF !important; }

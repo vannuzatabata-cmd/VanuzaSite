@@ -1,0 +1,113 @@
+---
+import TechniqueIcon from './TechniqueIcon.astro';
+
+const techniques = [
+  {
+    num: '01',
+    name: 'Microlink',
+    href: '/tecnicas#microlink',
+    desc: 'Pequenas anilhas unem as mechas ao cabelo natural em uma distribuição planeada após a avaliação.',
+    detail: 'Indicação personalizada',
+    icon: 'microlink',
+  },
+  {
+    num: '02',
+    name: 'Fita Adesiva',
+    href: '/tecnicas#fita-adesiva',
+    desc: 'Bases adesivas finas são distribuídas em camadas de acordo com densidade, corte e rotina da cliente.',
+    detail: 'Planeamento individual',
+    icon: 'fita-adesiva',
+  },
+  {
+    num: '03',
+    name: 'Ponto Americano',
+    href: '/tecnicas#ponto-americano',
+    desc: 'Uma trama de cabelo é organizada em linhas planeadas para a base natural e o volume desejado.',
+    detail: 'Avaliação da base natural',
+    icon: 'ponto-americano',
+  },
+  {
+    num: '04',
+    name: 'Manutenção',
+    href: '/servicos/manutencao',
+    desc: 'Revisão, higienização e reposicionamento são definidos conforme a técnica e o crescimento do cabelo.',
+    detail: 'Retorno individual',
+    icon: 'manutencao',
+  },
+];
+---
+
+<section
+  class="tone-marsala section-standard relative overflow-hidden"
+>
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse at 50% 0%, rgba(152,73,92,0.18) 0%, transparent 60%);"
+  ></div>
+
+  <div class="site-container relative">
+    <div class="mb-12 flex flex-col items-center gap-6 text-center">
+      <h2 class="section-title font-extrabold text-white">Técnicas Profissionais</h2>
+      <a
+        href="/tecnicas"
+        class="whitespace-nowrap border-b pb-0.5 text-sm font-bold transition-opacity hover:opacity-70"
+        style="color: var(--gold); border-color: rgba(198,161,91,0.3);"
+      >
+        Ver todas as técnicas →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+      {techniques.map((technique) => (
+        <a
+          href={technique.href}
+          aria-label={`Saiba mais sobre ${technique.name}`}
+          class="group relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 sm:p-7"
+          style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 4px 24px rgba(0,0,0,0.2);"
+        >
+          <div
+            class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style="background: linear-gradient(135deg, rgba(96,36,56,0.45) 0%, transparent 50%);"
+          ></div>
+
+          <div class="mb-6 flex items-start justify-between">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl"
+              style="background: rgba(152,73,92,0.2); color: var(--gold);"
+            >
+              <TechniqueIcon name={technique.icon} class="h-10 w-10" />
+            </div>
+
+            <span
+              class="rounded-full px-3 py-1.5 text-[10px] font-bold"
+              style="background: rgba(198,161,91,0.12); color: var(--gold);"
+            >
+              {technique.detail}
+            </span>
+          </div>
+
+          <p
+            class="mb-2 text-xs font-bold uppercase tracking-[0.2em]"
+            style="color: rgba(198,161,91,0.5);"
+          >
+            {technique.num}
+          </p>
+          <h3 class="mb-3 text-2xl font-extrabold text-white">{technique.name}</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72);">
+            {technique.desc}
+          </p>
+          <span class="mt-5 inline-flex text-sm font-bold" style="color: var(--gold);">Ver detalhes</span>
+
+          <div
+            class="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+            style="background: linear-gradient(90deg, var(--gold), transparent);"
+          ></div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/tecnicas" class="button-primary">Conhecer Todas as Técnicas</a>
+    </div>
+  </div>
+</section>

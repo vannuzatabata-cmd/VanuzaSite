@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const title = 'Página não encontrada';
+const description = 'A página que procura não existe ou foi movida.';
+---
+
+<BaseLayout title={title} description={description} path="/404" noindex>
+  <main
+    class="min-h-[100dvh] flex items-center justify-center px-5"
+    style="background: linear-gradient(135deg, #985365 0%, #985365 100%)"
+  >
+    <div class="text-center">
+      <p class="text-8xl font-extrabold leading-none mb-4" style="color: var(--gold)">
+        404
+      </p>
+      <h1 class="text-white text-2xl font-extrabold mb-3">Página não encontrada</h1>
+      <p class="text-white/70 text-sm mb-8 max-w-sm mx-auto">
+        A página que procura não existe ou foi movida. Volte ao início e explore o nosso site.
+      </p>
+      <a href="/" class="button-primary">Voltar para o início</a>
+    </div>
+  </main>
+</BaseLayout>

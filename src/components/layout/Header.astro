@@ -1,0 +1,149 @@
+---
+import { siteConfig, vendasMenu } from '@/data/site';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (path: string) => {
+  if (path.includes('#')) return false;
+  const cleanPath = path.replace(/\/$/, '') || '/';
+  return cleanPath === currentPath;
+};
+const icones = {
+  book: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  bag: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z',
+};
+const vendasAtiva = vendasMenu.items.some((item) => isCurrent(item.path));
+---
+
+<header class="fixed top-0 z-50 w-full border-b border-[#C6A15B]/80 bg-[#5C2636]">
+  <nav class="flex h-[88px] items-center" aria-label="Navegação principal">
+    <a href="/" class="flex h-full flex-1 items-center justify-center" aria-label="Vanuza Soares Extensões — página inicial">
+      <img
+        src="/brand/vanuza-soares-wordmark-gold.png"
+        width="1200"
+        height="228"
+        alt="Vanuza Soares Extensões"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        class="h-auto w-[200px] sm:w-[220px] lg:w-[260px] xl:w-[300px]"
+      />
+    </a>
+
+    <div class="header-end flex items-center gap-4">
+    <div class="hidden items-center gap-5 lg:flex xl:gap-7">
+      {siteConfig.pages.map((page) => (
+        <a
+          href={page.path}
+          aria-current={isCurrent(page.path) ? 'page' : undefined}
+          class:list={[
+            'inline-flex items-center gap-1.5 text-sm font-semibold tracking-wide transition-colors hover:text-white',
+            isCurrent(page.path) ? 'text-white underline decoration-[#C6A15B] decoration-2 underline-offset-[10px]' : 'text-white/85',
+          ]}
+        >
+          {page.icon && <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icones[page.icon]} /></svg>}
+          {page.name}
+        </a>
+      ))}
+
+      <div class="group relative">
+        <button
+          type="button"
+          class:list={[
+            'flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors hover:text-white',
+            vendasAtiva ? 'text-white' : 'text-white/85',
+          ]}
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-vendas-toggle
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icones.bag} /></svg>
+          {vendasMenu.name}
+          <svg class="h-3.5 w-3.5 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" />
+          </svg>
+        </button>
+        <div class="invisible absolute right-0 top-full pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100" data-vendas-panel>
+          <div class="min-w-[220px] rounded-xl border border-[#C6A15B]/60 bg-[#5C2636] p-2 shadow-2xl">
+            <p class="px-3 pb-2 pt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#C6A15B]">Vendas</p>
+            {vendasMenu.items.map((item) => (
+              <a
+                href={item.path}
+                aria-current={isCurrent(item.path) ? 'page' : undefined}
+                class:list={[
+                  'block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white',
+                  isCurrent(item.path) ? 'text-white' : 'text-white/85',
+                ]}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details class="mobile-menu group relative lg:hidden" data-mobile-menu>
+      <summary class="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-xl text-white transition-colors hover:bg-white/10" aria-label="Abrir ou fechar menu">
+        <svg class="menu-open h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M4 7h16M7 12h13M4 17h16" stroke-linecap="round" stroke-width="2" />
+        </svg>
+        <svg class="menu-close hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="m6 6 12 12M18 6 6 18" stroke-linecap="round" stroke-width="2" />
+        </svg>
+      </summary>
+
+      <div id="menu-mobile" class="fixed inset-x-0 top-[88px] max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain border-t border-[#C6A15B]/80 bg-[#5C2636] px-5 py-4 shadow-2xl">
+        {siteConfig.pages.map((page) => (
+          <a
+            href={page.path}
+            aria-current={isCurrent(page.path) ? 'page' : undefined}
+            class="block border-b border-white/5 py-3 text-base font-semibold text-white/80 transition-colors last:border-0 hover:text-white"
+          >
+            {page.icon && <svg class="mr-2 inline h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icones[page.icon]} /></svg>}
+            {page.name}
+          </a>
+        ))}
+
+        <p class="flex items-center gap-2 pt-4 pb-1 text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15B]"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d={icones.bag} /></svg>{vendasMenu.name}</p>
+        {vendasMenu.items.map((item) => (
+          <a
+            href={item.path}
+            aria-current={isCurrent(item.path) ? 'page' : undefined}
+            class="block border-b border-white/5 py-3 pl-4 text-base font-semibold text-white/80 transition-colors last:border-0 hover:text-white"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </details>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Mesma margem lateral do .site-container, mas só no lado direito:
+     a logo passa a ocupar a faixa desde a borda da página até o menu. */
+  .header-end {
+    padding-right: calc(max(0px, (100vw - 80rem) / 2) + 1.25rem);
+  }
+  @media (min-width: 640px) {
+    .header-end { padding-right: calc(max(0px, (100vw - 80rem) / 2) + 2rem); }
+  }
+  summary::-webkit-details-marker { display: none; }
+  details[open] .menu-open { display: none; }
+  details[open] .menu-close { display: block; }
+</style>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('[data-mobile-menu]');
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !mobileMenu?.open) return;
+    mobileMenu.removeAttribute('open');
+    mobileMenu.querySelector<HTMLElement>('summary')?.focus();
+  });
+</script>

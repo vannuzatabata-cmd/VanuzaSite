@@ -1,0 +1,89 @@
+---
+import { siteConfig } from '@/data/site';
+
+const stats = [
+  {
+    value: '+10',
+    label: 'anos de mercado',
+    sub: 'Dedicação constante e aperfeiçoamento contínuo',
+  },
+  {
+    value: '3',
+    label: 'técnicas disponíveis',
+    sub: 'Microlink, Fita Adesiva e Ponto Americano',
+  },
+  {
+    value: siteConfig.brand.googleRating.value.toFixed(1).replace('.', ','),
+    label: 'nota no Google',
+    sub: `Avaliações públicas consultadas em julho de 2026`,
+    small: true,
+  },
+];
+---
+
+<section class="tone-nude section-standard relative overflow-hidden text-white">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-20"
+    style="background-image: radial-gradient(ellipse at 80% 50%, rgba(152,73,92,0.35) 0%, transparent 60%);"
+  ></div>
+
+  <div class="site-container relative">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="section-title mb-6 font-extrabold text-white">
+          De renda extra a propósito de vida
+        </h2>
+
+        <div class="space-y-5 text-base font-medium leading-relaxed text-white/75 sm:text-lg">
+          <p>
+            Uma trajetória construída com dedicação, técnica e amor pelo que faz. Ao longo de mais de 10 anos,
+            Vanuza Soares transformou a extensão capilar em muito mais que um serviço: em uma experiência de
+            cuidado, confiança e valorização da beleza de cada cliente.
+          </p>
+          <p>
+            Cada etapa trouxe aprendizado, evolução técnica e mais conexão com mulheres que buscavam
+            não apenas alongar os fios, mas recuperar presença, confiança e autoestima.
+          </p>
+          <p>
+            Hoje, o perfil público registra
+            <span class="font-bold text-white"> nota 5,0 no Google</span>. Esse retorno
+            acompanha um atendimento que une escuta, planeamento e orientação para o dia a dia.
+          </p>
+        </div>
+
+        <a
+          href="/nossa-historia"
+          class="mt-10 inline-flex items-center gap-2 border-b pb-0.5 text-sm font-bold transition-colors"
+          style="color: var(--gold); border-color: rgba(198,161,91,0.3);"
+        >
+          Conhecer a história completa
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-1">
+        {stats.map((stat) => (
+          <div
+            class="flex items-center gap-5 rounded-xl p-5 sm:p-6"
+            style="background: rgba(96,36,56,0.45); border: 1px solid rgba(96,36,56,0.45);"
+          >
+            <div class="flex-shrink-0">
+              <span
+                class="stat-number"
+                style={stat.small ? 'font-size: clamp(1.5rem, 3vw, 2.2rem);' : undefined}
+              >
+                {stat.value}
+              </span>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-white">{stat.label}</p>
+              <p class="mt-1 text-xs text-white/70">{stat.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

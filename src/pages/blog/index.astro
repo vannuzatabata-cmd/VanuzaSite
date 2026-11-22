@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+---
+
+<BaseLayout
+  title="Blog"
+  description="Artigos sobre técnicas, cuidados e manutenção de extensão capilar, com a Vanuza Soares Extensões."
+  path="/blog"
+>
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">Blog</p>
+        <h1 class="page-title font-extrabold text-white mb-6">Blog Vanuza Soares Extensões</h1>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(255,255,255,0.75)">
+          Os artigos sobre técnicas, cuidados e manutenção estão a ser preparados.
+        </p>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+        <p class="leading-relaxed mb-8" style="color: rgba(74,31,44,0.8)">
+          Em breve, esta página terá artigos com fotografias, pesquisa e categorias. Enquanto isso, fale connosco pelo WhatsApp para tirar dúvidas.
+        </p>
+        <a href={siteConfig.brand.whatsapp} target="_blank" rel="noopener noreferrer" class="button-primary">
+          Falar pelo WhatsApp
+          <span class="sr-only">, abre em nova aba</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

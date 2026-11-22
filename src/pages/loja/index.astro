@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { lojaCategorias } from '@/data/loja';
+---
+
+<BaseLayout
+  title="Loja de cabelos e materiais para extensão capilar"
+  description="Cabelos naturais e materiais para extensão capilar, com atendimento em Leiria, Portugal."
+  path="/loja"
+>
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">Loja</p>
+        <h1 class="page-title font-extrabold text-white mb-6">Loja Vanuza Soares Extensões</h1>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(255,255,255,0.75)">
+          Escolha uma categoria para ver os cabelos e os materiais disponíveis.
+        </p>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-6">
+        {
+          lojaCategorias.map((categoria) => (
+            <a
+              href={`/loja/${categoria.slug}`}
+              class="loja-card group rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[300px] transition-transform duration-300 hover:-translate-y-1"
+              style="background: #985365; box-shadow: 0 16px 48px rgba(92,38,54,0.2)"
+            >
+              <div>
+                <p class="loja-eyebrow text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                  {categoria.subcategorias.length} categorias
+                </p>
+                <h2 class="loja-titulo text-3xl sm:text-4xl font-extrabold mb-4">{categoria.nome.toUpperCase()}</h2>
+                <p class="loja-texto leading-relaxed">{categoria.descricao}</p>
+              </div>
+              <span class="loja-acao mt-8 inline-flex font-bold text-sm">Ver categoria →</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="text-center mt-10 text-sm" style="color: rgba(74,31,44,0.75)">
+        Os produtos estão a ser preparados. Enquanto isso, fale connosco pelo WhatsApp para saber o que está disponível.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

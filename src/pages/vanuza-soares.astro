@@ -1,0 +1,259 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+
+const principles = [
+  {
+    title: 'Escuta antes da técnica',
+    text: 'O atendimento começa pela intenção da cliente e pela análise do cabelo. A escolha não é feita apenas pela aparência de uma foto.',
+  },
+  {
+    title: 'Planeamento individual',
+    text: 'Técnica, quantidade, distribuição, cor e textura precisam conversar com a base natural e com a rotina de quem vai usar.',
+  },
+  {
+    title: 'Orientação para o dia a dia',
+    text: 'Aplicação e manutenção vêm acompanhadas de cuidados claros para lavagem, secagem, escovagem e retorno profissional.',
+  },
+];
+
+const services = [
+  ['Microlink', '/tecnicas#microlink', 'Mechas fixadas com pequenas anilhas.'],
+  ['Fita Adesiva', '/tecnicas#fita-adesiva', 'Bases adesivas distribuídas em camadas.'],
+  ['Ponto Americano', '/tecnicas#ponto-americano', 'Trama aplicada em linhas planeadas.'],
+  ['Manutenção', '/servicos/manutencao', 'Revisão e reposicionamento conforme a técnica.'],
+] as const;
+
+const { address } = siteConfig.brand;
+---
+
+<BaseLayout
+  title="Trajetória e Atendimento em Leiria"
+  description="Conheça Vanuza Soares, a sua trajetória com extensões capilares e a forma de atendimento em Leiria, Portugal."
+  path="/vanuza-soares"
+>
+  <main class="min-h-[100dvh]">
+    <section
+      class="tone-marsala relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 32% 58%, rgba(152,73,92,0.3), transparent 60%)"
+      ></div>
+      <div class="page-hero-content relative max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">
+            Extensões capilares em Leiria, Portugal
+          </p>
+          <h1 class="page-title font-extrabold text-white mb-6">Vanuza Soares</h1>
+          <p class="text-lg sm:text-xl leading-relaxed" style="color: rgba(255,255,255,0.68)">
+            Profissional dedicada a extensões capilares, Vanuza atende mulheres que procuram comprimento, volume
+            e um acabamento coerente com o próprio cabelo. O seu trabalho une avaliação, aplicação personalizada e
+            orientação para manter o resultado no dia a dia.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 mt-9">
+            <a
+              href={siteConfig.brand.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button-primary"
+            >
+              Conversar com Vanuza
+              <span class="sr-only">, abre em nova aba</span>
+            </a>
+            <a href="/resultados" class="button-secondary">Conhecer resultados</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="tone-nude section-standard"
+    >
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-start">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Uma trajetória construída no atendimento
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-6">Experiência que se transforma em cuidado</h2>
+          <div class="space-y-5 leading-relaxed" style="color: rgba(255,255,255,0.74)">
+            <p>
+              Ao longo de mais de {siteConfig.stats.yearsExperience} anos de trabalho, Vanuza desenvolveu a sua atuação
+              acompanhando clientes, aperfeiçoando técnicas e entendendo como diferentes cabelos respondem às
+              escolhas de aplicação e manutenção.
+            </p>
+            <p>
+              Essa experiência aparece no processo: ouvir o que a cliente deseja, observar a base natural,
+              explicar limites e possibilidades e construir um plano que possa ser cuidado fora do salão. O
+              objetivo é que a decisão seja informada, sem promessas iguais para todo mundo.
+            </p>
+            <p>
+              O trabalho é realizado em Leiria, Portugal, com hora marcada. O espaço recebe
+              clientes para avaliação, aplicação e manutenção de extensão capilar, além das atividades de formação
+              divulgadas nos canais oficiais.
+            </p>
+          </div>
+          <a href="/nossa-historia" class="inline-flex mt-6 text-sm font-bold" style="color: var(--gold-light)">
+            Veja a história completa da marca →
+          </a>
+        </div>
+
+        <aside
+          class="rounded-2xl p-7 sm:p-8"
+          style="background: linear-gradient(145deg, #985365, #985365)"
+          aria-labelledby="atendimento-local"
+        >
+          <p class="text-white/75 text-xs font-bold uppercase tracking-[0.12em] mb-4">Atendimento local</p>
+          <h2 id="atendimento-local" class="text-white text-2xl font-extrabold mb-4">Leiria, Portugal</h2>
+          <address class="not-italic text-white/75 leading-relaxed mb-6">
+            Leiria, Portugal
+          </address>
+          <a
+            href={siteConfig.brand.mapsSearchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex px-6 py-3.5 rounded-full text-sm font-bold text-white"
+            style="background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.16)"
+          >
+            Abrir perfil no Google Maps
+            <span class="sr-only">, abre em nova aba</span>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section
+      class="tone-marsala section-standard"
+    >
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Forma de trabalhar
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-5">O que orienta cada atendimento</h2>
+          <p class="leading-relaxed" style="color: rgba(255,255,255,0.72)">
+            Extensão capilar não começa na fixação. O resultado também depende da conversa, do planeamento e da
+            capacidade de manter os cuidados depois do atendimento.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          {
+            principles.map((item, index) => (
+              <article
+                class="rounded-2xl p-6 sm:p-7"
+                style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+              >
+                <span class="text-sm font-extrabold" style="color: var(--gold)">0{index + 1}</span>
+                <h3 class="text-white text-xl font-extrabold mt-4 mb-3">{item.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="tone-nude section-standard"
+    >
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Técnicas e continuidade
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-5">Serviços explicados com clareza</h2>
+          <p class="leading-relaxed" style="color: rgba(255,255,255,0.72)">
+            Cada página abaixo explica como a técnica funciona, o que é observado na avaliação e quais cuidados
+            fazem parte da rotina. Elas ajudam a chegar à conversa com perguntas melhores.
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {
+            services.map(([title, href, text]) => (
+              <article
+                class="rounded-2xl p-6 flex flex-col"
+                style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+              >
+                <h3 class="text-white text-lg font-extrabold mb-3">{title}</h3>
+                <p class="text-sm leading-relaxed mb-5 flex-grow" style="color: rgba(255,255,255,0.72)">
+                  {text}
+                </p>
+                <a href={href} class="text-sm font-bold" style="color: var(--gold-light)">Saiba mais →</a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="tone-marsala section-standard"
+    >
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Confira por si mesma
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-5">Resultados, avaliações e canais oficiais</h2>
+          <p class="leading-relaxed" style="color: rgba(255,255,255,0.72)">
+            Antes de escolher uma profissional, veja trabalhos publicados, leia experiências de clientes e use os
+            canais oficiais para confirmar informações. O site reúne resultados e conecta ao perfil de Vanuza no
+            Google e nas redes sociais.
+          </p>
+        </div>
+        <nav class="grid gap-3" aria-label="Resultados e canais oficiais">
+          <a
+            href="/resultados"
+            class="rounded-xl px-5 py-4 font-bold text-white/80"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            Ver resultados publicados →
+          </a>
+          <a
+            href={siteConfig.brand.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl px-5 py-4 font-bold text-white/80"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            Ler avaliações no Google →<span class="sr-only">, abre em nova aba</span>
+          </a>
+          <a
+            href={siteConfig.brand.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl px-5 py-4 font-bold text-white/80"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            Acompanhar o Instagram oficial →<span class="sr-only">, abre em nova aba</span>
+          </a>
+          <a
+            href="/perguntas-frequentes"
+            class="rounded-xl px-5 py-4 font-bold text-white/80"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            Consultar perguntas frequentes →
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="tone-nude section-compact">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+        <h2 class="section-title text-white font-extrabold mb-4">Vamos conversar sobre o seu cabelo?</h2>
+        <p class="text-white/90 leading-relaxed mb-8">
+          Fale com Vanuza pelo WhatsApp para consultar disponibilidade e agendar uma avaliação em Leiria, Portugal.
+        </p>
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+        >
+          Chamar Vanuza no WhatsApp
+          <span class="sr-only">, abre em nova aba</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

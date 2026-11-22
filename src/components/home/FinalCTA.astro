@@ -1,0 +1,58 @@
+---
+import { siteConfig } from '@/data/site';
+---
+
+<section
+  class="tone-nude section-compact relative overflow-hidden"
+>
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse at 50% 100%, rgba(152,73,92,0.35) 0%, transparent 65%);"
+  ></div>
+  <div
+    class="absolute left-0 right-0 top-0 h-px"
+    style="background: linear-gradient(90deg, transparent, rgba(198,161,91,0.5), transparent);"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 right-0 h-px"
+    style="background: linear-gradient(90deg, transparent, rgba(198,161,91,0.5), transparent);"
+  ></div>
+
+  <div class="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
+    <h2 class="section-title mb-4 font-extrabold text-white">
+      Merece sentir-se <span class="font-extrabold italic" style="color: #8C6B36;">poderosa.</span>
+    </h2>
+
+    <p class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+      Agende uma avaliação para perceber qual técnica de extensão capilar é mais adequada ao seu cabelo,
+      à sua rotina e ao resultado que procura.
+    </p>
+
+    <div class="flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        href={siteConfig.brand.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button-primary"
+      >
+        Agendar pelo WhatsApp
+      </a>
+      <a
+        href={siteConfig.brand.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button-secondary"
+      >
+        Seguir no Instagram
+      </a>
+<a
+        href="https://www.instagram.com/extensaocapilarportugal_leiria?jplx=MXdibTV0N2ZjZHZh&utm_source=qr"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button-secondary"
+      >
+        Seguir @extensaocapilarportugal_leiria
+      </a>
+    </div>
+  </div>
+</section>

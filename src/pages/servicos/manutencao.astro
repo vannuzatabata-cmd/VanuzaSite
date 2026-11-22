@@ -1,0 +1,208 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/site';
+
+const title = 'Manutenção de Extensão Capilar em Leiria';
+const description =
+  'Entenda quando e por que fazer manutenção da extensão capilar. Atendimento para Microlink, Fita Adesiva e Ponto Americano em Leiria, Portugal.';
+
+const signs = [
+  'As fixações estão mais distantes da raiz por causa do crescimento natural.',
+  'Alguma mecha ou faixa mudou de posição ou se soltou.',
+  'O desembaraço e a higienização da região ficaram mais difíceis.',
+  'Nota puxões, peso diferente ou desconforto persistente.',
+  'A profissional já indicou uma data de revisão de acordo com a técnica.',
+];
+
+const preparation = [
+  {
+    title: 'Converse antes',
+    text: 'Informe qual técnica usa, quando foi a aplicação e se houve soltura, desconforto ou mudança na rotina.',
+  },
+  {
+    title: 'Não ajuste em casa',
+    text: 'Evite puxar, colar, cortar ou retirar fixações por conta própria. Isso pode dificultar o atendimento e comprometer fios e mechas.',
+  },
+  {
+    title: 'Leve as mechas soltas',
+    text: 'Se alguma parte se desprender, guarde-a limpa e seca e leve ao atendimento para que a condição seja avaliada.',
+  },
+  {
+    title: 'Siga a orientação recebida',
+    text: 'A forma de chegar ao atendimento pode variar conforme o serviço. Confirme pelo WhatsApp se deve lavar ou preparar o cabelo antes.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} path="/servicos/manutencao">
+  <main class="min-h-[100dvh]">
+    <section class="tone-marsala relative overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 68% 60%, rgba(152,73,92,0.27), transparent 62%)"
+      ></div>
+      <div class="page-hero-content relative max-w-5xl mx-auto px-5 sm:px-8">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] mb-5" style="color: var(--gold)">
+          Cuidado contínuo em Leiria, Portugal
+        </p>
+        <h1 class="page-title font-extrabold text-white mb-6 max-w-4xl">
+          Manutenção de Extensão Capilar em Leiria
+        </h1>
+        <p class="text-lg sm:text-xl leading-relaxed max-w-3xl" style="color: rgba(255,255,255,0.68)">
+          A manutenção é a revisão profissional da aplicação conforme o cabelo cresce. Ela permite
+          conferir as fixações, cuidar do desembaraço próximo à raiz e reposicionar ou reaplicar as
+          mechas de acordo com a técnica e com o estado do material.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-9">
+          <a
+            href={siteConfig.brand.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button-primary"
+          >
+            Consultar manutenção pelo WhatsApp
+          </a>
+          <a href="/perguntas-frequentes" class="button-secondary">Ver dúvidas frequentes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Sem prazo universal
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-6">Quando fazer a manutenção?</h2>
+          <div class="space-y-5 leading-relaxed" style="color: rgba(255,255,255,0.74)">
+            <p>
+              O intervalo depende da técnica, da velocidade de crescimento, da rotina de cuidados e de
+              como a aplicação se comporta. Por isso, uma data usada por outra pessoa não deve ser
+              tratada como regra para o seu cabelo.
+            </p>
+            <p>
+              A orientação inicial cria uma referência de retorno, mas a revisão pode precisar ser
+              antecipada. Se houver desconforto persistente, mechas fora de posição ou dificuldade para
+              higienizar, entre em contacto em vez de esperar a data combinada.
+            </p>
+            <p>
+              Se a aplicação foi feita por outra profissional, envie informações e fotos antes de
+              marcar. Vanuza avaliará se consegue realizar o serviço e qual atendimento será necessário.
+            </p>
+          </div>
+        </div>
+        <aside
+          class="rounded-2xl p-7 sm:p-8"
+          style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22)"
+        >
+          <h2 class="text-white text-xl font-extrabold mb-5">Sinais de que é hora de revisar</h2>
+          <ul class="space-y-4">
+            {signs.map((item) => (
+              <li class="flex gap-3 text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">
+                <span aria-hidden="true" style="color: var(--gold)">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tone-marsala section-standard">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl mb-10">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            O serviço muda conforme a técnica
+          </p>
+          <h2 class="section-title text-white font-extrabold mb-5">O que acontece no retorno</h2>
+          <p class="leading-relaxed" style="color: rgba(255,255,255,0.72)">
+            A manutenção não é apenas “subir” a extensão capilar. A aplicação é examinada, as mechas são
+            trabalhadas conforme o método e a condição do cabelo é considerada antes da nova fixação.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <article
+            class="rounded-2xl p-6 sm:p-7"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            <h3 class="text-white text-xl font-extrabold mb-3">Microlink</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: rgba(255,255,255,0.72)">
+              As anilhas e as mechas são revisadas e reposicionadas quando apropriado, com atenção aos
+              fios naturalmente desprendidos desde a aplicação.
+            </p>
+            <a href="/tecnicas#microlink" class="text-sm font-bold" style="color: var(--gold-light)">
+              Conhecer Microlink →
+            </a>
+          </article>
+          <article
+            class="rounded-2xl p-6 sm:p-7"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            <h3 class="text-white text-xl font-extrabold mb-3">Fita Adesiva</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: rgba(255,255,255,0.72)">
+              As faixas são removidas com produto adequado, limpas e preparadas para reposicionamento
+              se as mechas estiverem em condições de reaplicação.
+            </p>
+            <a href="/tecnicas#fita-adesiva" class="text-sm font-bold" style="color: var(--gold-light)">
+              Conhecer Fita Adesiva →
+            </a>
+          </article>
+          <article
+            class="rounded-2xl p-6 sm:p-7"
+            style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+          >
+            <h3 class="text-white text-xl font-extrabold mb-3">Ponto Americano</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color: rgba(255,255,255,0.72)">
+              A trama e os pontos são removidos ou refeitos de acordo com o crescimento, a conservação
+              do material e o novo planeamento das linhas.
+            </p>
+            <a href="/tecnicas#ponto-americano" class="text-sm font-bold" style="color: var(--gold-light)">
+              Conhecer Ponto Americano →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tone-nude section-standard">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-10">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] mb-4" style="color: var(--gold)">
+            Antes do atendimento
+          </p>
+          <h2 class="section-title text-white font-extrabold">Como se preparar</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {preparation.map((item, index) => (
+            <article
+              class="rounded-2xl p-6 sm:p-7"
+              style="background: rgba(255,255,255,0.045); border: 1px solid rgba(96,36,56,0.45)"
+            >
+              <span class="text-sm font-extrabold" style="color: var(--gold)">0{index + 1}</span>
+              <h3 class="text-white text-lg font-extrabold mt-4 mb-3">{item.title}</h3>
+              <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72)">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="tone-marsala section-compact">
+      <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+        <h2 class="section-title text-white font-extrabold mb-4">A sua extensão capilar está a pedir revisão?</h2>
+        <p class="text-white/90 leading-relaxed mb-8">
+          Envie uma mensagem com a técnica utilizada e a data aproximada da aplicação. O atendimento é
+          feito com marcação prévia em Leiria, Portugal.
+        </p>
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+        >
+          Solicitar avaliação pelo WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,129 @@
+---
+import { siteConfig } from '@/data/site';
+import BrandLogo from '@/components/layout/BrandLogo.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[#C6A15B]/60 bg-[#985365] text-white">
+  <div class="site-container py-10 sm:py-12">
+    <div class="grid gap-y-10 md:grid-cols-2 md:gap-x-10 lg:grid-cols-12 lg:gap-x-8">
+      <div class="md:col-span-2 lg:col-span-4">
+        <a href="/" class="inline-flex" aria-label="Vanuza Soares Extensões — página inicial">
+          <BrandLogo variant="full" alt="" class="h-auto w-44 sm:w-48" />
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+          Extensão capilar em Leiria, Portugal, com avaliação personalizada e atendimento com hora marcada.
+        </p>
+
+        <nav class="mt-5 flex gap-1" aria-label="Redes sociais">
+          <a
+            href={siteConfig.brand.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white/65 transition-colors hover:bg-white/[0.06] hover:text-brand-gold-light"
+            aria-label="Instagram da Vanuza Soares, abre em uma nova aba"
+            title="Instagram"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-none stroke-current" stroke-width="1.7">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.4" cy="6.6" r="1" class="fill-current stroke-none"></circle>
+            </svg>
+          </a>
+          <a
+            href={siteConfig.brand.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white/65 transition-colors hover:bg-white/[0.06] hover:text-brand-gold-light"
+            aria-label="YouTube da Vanuza Soares, abre em uma nova aba"
+            title="YouTube"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-[19px] w-[19px] fill-none stroke-current" stroke-width="1.7" stroke-linejoin="round">
+              <path d="M21 12c0 2.1-.2 3.7-.5 4.6-.2.7-.8 1.3-1.5 1.5-1.3.4-5.8.4-7 .4s-5.7 0-7-.4a2.4 2.4 0 0 1-1.5-1.5C3.2 15.7 3 14.1 3 12s.2-3.7.5-4.6C3.7 6.7 4.3 6.1 5 5.9c1.3-.4 5.8-.4 7-.4s5.7 0 7 .4c.7.2 1.3.8 1.5 1.5.3.9.5 2.5.5 4.6Z"></path>
+              <path d="m10 9 5 3-5 3V9Z" class="fill-current stroke-none"></path>
+            </svg>
+          </a>
+          <a
+            href={siteConfig.brand.facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white/65 transition-colors hover:bg-white/[0.06] hover:text-brand-gold-light"
+            aria-label="Facebook da Vanuza Soares, abre em uma nova aba"
+            title="Facebook"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-[18px] w-[18px] fill-current">
+              <path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.7-1.6H17V3.8a24 24 0 0 0-2.6-.1c-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.5Z"></path>
+            </svg>
+          </a>
+        </nav>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6 md:col-span-1 lg:col-span-4 lg:gap-8">
+        <nav aria-labelledby="footer-quick-links">
+          <h2 id="footer-quick-links" class="mb-4 text-sm font-bold text-white">Links rápidos</h2>
+          <ul class="space-y-0.5">
+            <li><a href="/" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Início</a></li>
+            <li><a href="/tecnicas" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Técnicas</a></li>
+            <li><a href="/resultados" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Resultados</a></li>
+            <li><a href="/#avaliacoes" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Avaliações</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-information-links">
+          <h2 id="footer-information-links" class="mb-4 text-sm font-bold text-white">Informações</h2>
+          <ul class="space-y-0.5">
+            <li><a href="/vanuza-soares" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Sobre Vanuza</a></li>
+            <li><a href="/cursos" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Cursos</a></li>
+            <li><a href="/perguntas-frequentes" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Dúvidas frequentes</a></li>
+            <li><a href="/contato" class="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-brand-gold-light">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="md:col-span-1 lg:col-span-4 lg:pl-4">
+        <h2 class="mb-4 text-sm font-bold text-white">Atendimento</h2>
+        <address class="not-italic">
+          <a
+            href={siteConfig.brand.mapsSearchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block max-w-xs text-sm leading-relaxed text-white/70 transition-colors hover:text-white"
+          >
+            Leiria, Portugal
+            <span class="sr-only">, abre em uma nova aba</span>
+          </a>
+          <a href={`tel:${siteConfig.brand.phone}`} class="mt-2 inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-white">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="mr-2 h-4 w-4 shrink-0 fill-current">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            {siteConfig.brand.phoneDisplay}
+          </a>
+        </address>
+
+        <div class="flex flex-wrap gap-x-5 gap-y-1 text-xs font-semibold">
+          <a href={siteConfig.brand.mapsSearchUrl} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center text-white/65 transition-colors hover:text-brand-gold-light">Como chegar<span class="sr-only">, abre em uma nova aba</span></a>
+          <a href={siteConfig.brand.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center text-white/65 transition-colors hover:text-brand-gold-light">Avaliações no Google<span class="sr-only">, abre em uma nova aba</span></a>
+        </div>
+
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-brand-gold-light transition-colors hover:text-white"
+        >
+          Falar pelo WhatsApp
+          <span class="sr-only">, abre em uma nova aba</span>
+          <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4 fill-none stroke-current transition-transform group-hover:translate-x-0.5" stroke-width="1.7">
+            <path d="M4 10h11M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {siteConfig.brand.name}. Todos os direitos reservados.</p>
+      <p>Leiria, Portugal</p>
+    </div>
+  </div>
+</footer>

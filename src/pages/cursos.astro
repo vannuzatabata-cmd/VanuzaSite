@@ -1,0 +1,384 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { metadata as siteMetadata, siteConfig } from '@/data/site';
+
+const bonus = 'Aplicação de acabamento com Queratina ou Nanolink';
+
+const courses = [
+  {
+    id: 'microlink',
+    name: 'Curso Microlink',
+    price: '350 €',
+    desc: 'Aprenda a técnica Microlink desde a preparação até à aplicação e manutenção. Uma formação para desenvolver conhecimentos sobre os materiais, os tipos de anilhas, a distribuição das mechas e a execução de uma aplicação personalizada.',
+    contents: [
+      'Introdução à técnica Microlink',
+      'Tipos de anilhas e ferramentas',
+      'Preparação e separação dos cabelos',
+      'Proporção entre a mecha natural e a extensão',
+      'Distribuição e aplicação passo a passo',
+      'Acabamento e finalização',
+      'Manutenção e remoção',
+      'Orientações e cuidados para as clientes',
+    ],
+    message: 'Olá! Gostaria de receber informações sobre o Curso Microlink, no valor de 350 €.',
+    featured: false,
+  },
+  {
+    id: 'fita-adesiva',
+    name: 'Curso Fita Adesiva',
+    price: '350 €',
+    desc: 'Aprenda a técnica de Fita Adesiva, dominando a preparação, a aplicação, a remoção e o reposicionamento das extensões, com foco na distribuição correta das faixas e num acabamento natural e discreto.',
+    contents: [
+      'Conhecimento dos tipos de fitas adesivas',
+      'Materiais e ferramentas necessários',
+      'Preparação e limpeza do cabelo',
+      'Divisão estratégica e planeamento da aplicação',
+      'Posicionamento e fixação das fitas',
+      'Distribuição das extensões',
+      'Remoção e reposicionamento',
+      'Manutenção e cuidados para as clientes',
+    ],
+    message: 'Olá! Gostaria de receber informações sobre o Curso Fita Adesiva, no valor de 350 €.',
+    featured: false,
+  },
+  {
+    id: 'ponto-americano',
+    name: 'Curso Ponto Americano',
+    price: '350 €',
+    desc: 'Aprenda a técnica de Ponto Americano, incluindo a preparação da base com Microlink e nó italiano e a aplicação e fixação das extensões, com foco numa distribuição adequada e num acabamento natural.',
+    contents: [
+      'Conhecimento dos materiais e ferramentas',
+      'Preparação da base com Microlink',
+      'Preparação da base com nó italiano',
+      'Separação e organização das mechas',
+      'Costura e fixação das telas',
+      'Distribuição e acabamento',
+      'Manutenção e remoção',
+      'Orientações e cuidados para as clientes',
+    ],
+    message: 'Olá! Gostaria de receber informações sobre o Curso Ponto Americano, no valor de 350 €.',
+    featured: false,
+  },
+];
+
+const completo = {
+  id: 'completo',
+  badge: 'Formação completa',
+  name: 'Curso Completo',
+  price: '950 €',
+  originalPrice: '1.050 €',
+  saving: 'Poupe 100 €',
+  desc: 'Uma formação abrangente para profissionais que desejam desenvolver conhecimentos em três técnicas de alongamento capilar, desde a preparação e os materiais até à aplicação, manutenção e acabamento.',
+  includes: ['Curso Microlink', 'Curso Fita Adesiva', 'Curso Ponto Americano'],
+  benefits: [
+    'Acesso aos conteúdos das três formações',
+    'Conhecimento de diferentes métodos de aplicação',
+    'Aprendizagem das particularidades de cada técnica',
+    'Conhecimento sobre manutenção e cuidados',
+  ],
+  message: 'Olá! Gostaria de receber informações sobre o Curso Completo de Extensão Capilar, no valor de 950 €, que inclui as três técnicas.',
+};
+
+const whatsappLink = (message) => `${siteConfig.brand.whatsapp}?text=${encodeURIComponent(message)}`;
+---
+
+<BaseLayout
+  title={siteMetadata.courses.title}
+  description={siteMetadata.courses.description}
+  path="/cursos"
+>
+  <main class="min-h-[100dvh]">
+    <section
+      class="tone-marsala relative flex items-start overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 70% 40%, rgba(152,73,92,0.3) 0%, transparent 60%)"
+      ></div>
+      <div class="page-hero-content relative max-w-4xl mx-auto px-5 sm:px-8 text-center w-full">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div class="h-px w-8" style="background: var(--gold)"></div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--gold)">
+            Educação Profissional
+          </p>
+          <div class="h-px w-8" style="background: var(--gold)"></div>
+        </div>
+        <h1 class="page-title font-extrabold text-white mb-4">Cursos de extensão capilar em Leiria</h1>
+        <p class="text-lg max-w-xl mx-auto" style="color: rgba(255,255,255,0.75)">
+          Com mais de 10 anos de experiência no mercado, a Vanuza apresenta formações práticas para quem quer atender
+          com mais segurança e desenvolver um trabalho profissional.
+        </p>
+      </div>
+    </section>
+
+    <section class="tone-nude" aria-label="Informações sobre os cursos">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8 py-6 grid grid-cols-3 divide-x divide-white/20">
+        {
+          [
+            { value: '3', label: 'Técnicas apresentadas' },
+            { value: 'Leiria', label: 'Atendimento local' },
+            { value: 'Consulta', label: 'Datas e formato' },
+          ].map((stat) => (
+            <div class="text-center px-2 sm:px-4">
+              <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">{stat.value}</p>
+              <p class="text-white/80 text-xs font-medium mt-1 leading-tight">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="tone-marsala section-standard"
+    >
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="text-center mb-14">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <div class="h-px w-8" style="background: var(--gold)"></div>
+            <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--gold)">Cursos</p>
+            <div class="h-px w-8" style="background: var(--gold)"></div>
+          </div>
+          <h2 class="section-title font-extrabold text-white">Cursos disponíveis</h2>
+          <p class="mt-3 max-w-lg mx-auto" style="color: rgba(255,255,255,0.72)">
+            Escolha a técnica que quer dominar ou reúna as três numa única formação.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          {
+            courses.map((course) => (
+              <article
+                class="relative rounded-xl p-6 sm:p-7 flex h-full flex-col text-center"
+                style="background: rgba(96,36,56,0.45); border: 1px solid rgba(255,255,255,0.22)"
+              >
+
+                <h3 class="text-xl xl:text-2xl font-extrabold text-white mb-1 whitespace-nowrap">{course.name}</h3>
+                <p class="text-3xl font-extrabold mb-4 text-center" style="color: var(--gold-light)">{course.price}</p>
+                <p class="text-sm leading-relaxed mb-5" style="color: rgba(255,255,255,0.72)">{course.desc}</p>
+
+                <p class="text-xs font-bold uppercase tracking-wide text-white mb-3">Conteúdos</p>
+                <ul class="space-y-2 mb-6">
+                  {course.contents.map((item) => (
+                    <li class="text-xs font-medium" style="color: rgba(255,255,255,0.72)">
+                      <span aria-hidden="true" style="color: var(--gold)">•&nbsp;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="mt-auto space-y-4">
+                  <div
+                    class="rounded-xl px-4 py-3 text-xs font-bold"
+                    style="background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 50%, #EBDCBF 100%); color: #3E1823"
+                  >
+                    Bónus incluído: {bonus}
+                  </div>
+
+                  <p class="text-xs" style="color: rgba(255,255,255,0.6)">
+                    Formato e duração: informações sob consulta.
+                    Condições de pagamento: consulte as opções disponíveis pelo WhatsApp.
+                  </p>
+
+                  <a
+                    href={whatsappLink(course.message)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="button-secondary w-full rounded-xl"
+                    style="background: #C98A99; border-color: #C98A99; color: #3E1823"
+                  >
+                    Quero inscrever-me
+                    <span class="sr-only">, abre em nova aba</span>
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <article
+          class="completo-card relative mt-6 rounded-xl p-6 sm:p-8 lg:p-9 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:items-start"
+          style="background: #FFFFFF; box-shadow: 0 16px 60px rgba(152,73,92,0.25)"
+        >
+
+          <div>
+            <span
+              class="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide mb-5 w-fit"
+              style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9)"
+            >
+              {completo.badge}
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-1 whitespace-nowrap">{completo.name}</h3>
+            <div class="flex flex-wrap items-baseline gap-3 mb-4">
+              <p class="text-3xl font-extrabold" style="color: var(--gold-light)">{completo.price}</p>
+              <p class="text-sm line-through" style="color: rgba(255,255,255,0.6)">{completo.originalPrice}</p>
+              <span
+                class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide"
+                style="background: rgba(198,161,91,0.2); color: var(--gold-light)"
+              >
+                {completo.saving}
+              </span>
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: rgba(255,255,255,0.75)">{completo.desc}</p>
+            <p class="text-xs" style="color: rgba(255,255,255,0.7)">
+              Os três cursos individuais custam 1.050 € no total. Ao escolher o Curso Completo por 950 €, a aluna poupa 100 €.
+            </p>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-white mb-3">Inclui</p>
+            <ul class="space-y-2 mb-6">
+              {completo.includes.map((item) => (
+                <li class="flex items-center gap-2 text-sm font-medium" style="color: rgba(255,255,255,0.8)">
+                  <span aria-hidden="true" style="color: var(--gold)">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p class="text-xs font-bold uppercase tracking-wide text-white mb-3">Benefícios</p>
+            <ul class="space-y-2 mb-6">
+              {completo.benefits.map((item) => (
+                <li class="flex items-center gap-2 text-sm font-medium" style="color: rgba(255,255,255,0.75)">
+                  <span aria-hidden="true" style="color: var(--gold)">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div
+              class="rounded-xl px-4 py-3 mb-4 text-xs font-bold"
+              style="background: linear-gradient(135deg, #8F6F45 0%, #C6A15B 50%, #EBDCBF 100%); color: #3E1823"
+            >
+              Bónus incluído: {bonus}
+            </div>
+
+            <p class="text-xs mb-6" style="color: rgba(255,255,255,0.6)">
+              Formato e duração: informações sob consulta.
+              Condições de pagamento: consulte as opções disponíveis pelo WhatsApp.
+            </p>
+
+            <a
+              href={whatsappLink(completo.message)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button-primary w-full rounded-xl"
+            >
+              Quero inscrever-me
+              <span class="sr-only">, abre em nova aba</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
+      class="tone-nude section-standard"
+      aria-labelledby="beneficios-titulo"
+    >
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="text-center mb-12 sm:mb-14">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <div class="h-px w-8" style="background: #8C6B36"></div>
+            <p class="text-xs font-bold uppercase tracking-[0.2em]" style="color: #8C6B36">Benefícios</p>
+            <div class="h-px w-8" style="background: #8C6B36"></div>
+          </div>
+          <h2 id="beneficios-titulo" class="section-title font-extrabold text-[#4A1F2C] max-w-3xl mx-auto">
+            Aprenda técnicas profissionais e evolua na aplicação de extensão capilar
+          </h2>
+          <p class="mt-4 max-w-2xl mx-auto leading-relaxed" style="color: rgba(74,31,44,0.8)">
+            Formações pensadas para quem quer aprender, aperfeiçoar a técnica e oferecer resultados cada vez melhores às suas clientes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {
+            [
+              {
+                title: 'Aprendizagem prática',
+                desc: 'Conheça as etapas de aplicação até a finalização.',
+              },
+              {
+                title: 'Técnicas profissionais',
+                desc: 'Aprenda Microlink, Fita Adesiva e Ponto Americano, com conteúdos específicos para cada método.',
+              },
+              {
+                title: 'Acabamento natural',
+                desc: 'Desenvolva o olhar para uma aplicação bem distribuída, discreta e harmoniosa com o cabelo natural.',
+              },
+              {
+                title: 'Mais segurança na aplicação',
+                desc: 'Compreenda os procedimentos, os cuidados e os pontos importantes para realizar cada técnica.',
+              },
+              {
+                title: 'Manutenção e remoção',
+                desc: 'Aprenda os cuidados necessários para a manutenção e a remoção correta das extensões.',
+              },
+              {
+                title: 'Bónus especial',
+                desc: 'Todas as formações incluem uma aula extra sobre aplicação de acabamento com queratina ou Nanolink.',
+              },
+            ].map((item) => (
+              <article
+                class="flex flex-col items-center justify-center text-center rounded-2xl px-6 py-7 sm:px-7 sm:py-8"
+                style="background: #F8F3ED; border: 1px solid rgba(152,83,101,0.22); box-shadow: 0 8px 30px rgba(92,38,54,0.08)"
+              >
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-[#4A1F2C] mb-2 leading-tight">{item.title}</h3>
+                  <p class="text-sm leading-relaxed" style="color: rgba(74,31,44,0.8)">{item.desc}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="tone-marsala section-compact">
+      <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+        <h2 class="section-title font-extrabold text-white mb-4">O próximo passo da sua carreira profissional começa aqui.</h2>
+        <p class="text-white/95 mb-8">
+          Quer aprender uma nova técnica, aperfeiçoar os seus conhecimentos ou ampliar os serviços que oferece?
+          Escolha a formação ideal para si e entre em contacto para conhecer o programa, o formato das aulas,
+          a duração e as condições de inscrição.
+        </p>
+        <a
+          href={siteConfig.brand.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button-primary"
+        >
+          Falar com a Vanuza pelo WhatsApp
+          <span class="sr-only">, abre em nova aba</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Cartão Curso Completo: fundo branco com textos marrom-marsala */
+  .completo-card {
+    color: #4A1F2C;
+  }
+  .completo-card :is(h3, p, li, span, a) {
+    color: #4A1F2C;
+  }
+  .completo-card [style*="color: var(--gold-light)"],
+  .completo-card [style*="color: var(--gold)"],
+  .completo-card [style*="color: rgba(255,255,255"] {
+    color: #8C6B36 !important;
+  }
+  .completo-card [style*="background: rgba(255,255,255"] {
+    background: rgba(152, 83, 101, 0.08) !important;
+  }
+  .completo-card .button-primary {
+    background: #C98A99 !important;
+    background-position: 0 0 !important;
+    box-shadow: 0 6px 18px rgba(92, 38, 54, 0.25);
+    color: #3E1823 !important;
+  }
+  .completo-card .button-primary:hover {
+    background: #D59BAA !important;
+    box-shadow: 0 10px 26px rgba(92, 38, 54, 0.3);
+  }
+</style>

@@ -1,0 +1,79 @@
+<form id="contact-form" class="space-y-4">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+      <label for="contact-name" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-white/70">O seu nome *</label>
+      <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Como se chama?" required class="contact-field text-base sm:text-sm" />
+    </div>
+    <div>
+      <label for="contact-phone" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-white/70">Telefone</label>
+      <input id="contact-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="9XX XXX XXX" class="contact-field text-base sm:text-sm" />
+    </div>
+  </div>
+
+  <div>
+    <label for="contact-technique" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-white/70">Serviço de interesse</label>
+    <select id="contact-technique" name="technique" class="contact-field cursor-pointer text-base sm:text-sm">
+      <option value="">Escolha uma opção</option>
+      <option value="Microlink">Microlink</option>
+      <option value="Fita Adesiva">Fita Adesiva</option>
+      <option value="Ponto Americano">Ponto Americano</option>
+      <option value="Manutenção">Manutenção</option>
+      <option value="Curso">Curso</option>
+      <option value="Dúvidas gerais">Dúvidas gerais</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="contact-message" class="mb-1.5 block text-xs font-bold uppercase tracking-wide text-white/70">Mensagem</label>
+    <textarea id="contact-message" name="message" placeholder="Conte-nos um pouco sobre o que procura..." rows="4" class="contact-field resize-none text-base sm:text-sm"></textarea>
+  </div>
+
+  <button type="submit" class="button-primary with-wa-icon w-full rounded-xl">Enviar pelo WhatsApp</button>
+  <p class="text-center text-xs text-white/60">Vai ser encaminhada para o WhatsApp com a mensagem já preenchida.</p>
+</form>
+
+<style>
+  .contact-field {
+    width: 100%;
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    outline: none;
+    color-scheme: dark;
+  }
+
+  .contact-field:focus-visible {
+    border-color: var(--gold-light);
+  }
+
+  option { background: #985365; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#contact-form');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const name = String(data.get('name') ?? '').trim();
+    const phone = String(data.get('phone') ?? '').trim();
+    const technique = String(data.get('technique') ?? '').trim();
+    const message = String(data.get('message') ?? '').trim();
+    const parts = ['Olá, Vanuza!'];
+
+    if (name) parts.push(`O meu nome é *${name}*`);
+    if (phone) parts.push(`Telefone: ${phone}`);
+    if (technique) parts.push(`Tenho interesse em: *${technique}*`);
+    if (message) parts.push(`\n${message}`);
+    parts.push('\nGostaria de mais informações!');
+
+    const url = `https://wa.me/351930666495?text=${encodeURIComponent(parts.join('\n'))}`;
+    const whatsappWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (whatsappWindow) whatsappWindow.opener = null;
+  });
+</script>
